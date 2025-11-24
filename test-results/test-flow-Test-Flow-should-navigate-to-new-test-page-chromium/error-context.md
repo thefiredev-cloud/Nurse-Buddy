@@ -1,0 +1,77 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - link "Nurse Buddy" [ref=e6] [cursor=pointer]:
+        - /url: /dashboard
+      - navigation [ref=e7]:
+        - link "Dashboard" [ref=e8] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e9]
+          - generic [ref=e12]: Dashboard
+        - link "New Test" [ref=e13] [cursor=pointer]:
+          - /url: /dashboard/test/new
+          - img [ref=e14]
+          - generic [ref=e17]: New Test
+        - link "Test History" [ref=e18] [cursor=pointer]:
+          - /url: /dashboard/history
+          - img [ref=e19]
+          - generic [ref=e22]: Test History
+        - link "Settings" [ref=e23] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e24]
+          - generic [ref=e27]: Settings
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Pro Access
+        - paragraph [ref=e31]: Unlimited practice tests
+    - generic [ref=e32]:
+      - banner [ref=e33]:
+        - heading "NCLEX Test Prep" [level=1] [ref=e34]
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - paragraph [ref=e38]: Jane Doe
+              - paragraph [ref=e39]: student@example.com
+            - img [ref=e41]
+          - link "Logout" [ref=e44] [cursor=pointer]:
+            - /url: /sign-in
+            - img [ref=e45]
+            - text: Logout
+      - main [ref=e48]:
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - heading "Start New Practice Test" [level=3] [ref=e52]
+            - paragraph [ref=e53]: You're about to begin a 100-question NCLEX-style practice exam
+          - generic [ref=e54]:
+            - generic [ref=e55]:
+              - heading "Test Information:" [level=3] [ref=e56]
+              - list [ref=e57]:
+                - listitem [ref=e58]:
+                  - generic [ref=e59]: •
+                  - generic [ref=e60]: 100 AI-generated NCLEX-style questions
+                - listitem [ref=e61]:
+                  - generic [ref=e62]: •
+                  - generic [ref=e63]: Questions distributed across all NCLEX categories
+                - listitem [ref=e64]:
+                  - generic [ref=e65]: •
+                  - generic [ref=e66]: Detailed rationales provided for every answer
+                - listitem [ref=e67]:
+                  - generic [ref=e68]: •
+                  - generic [ref=e69]: Optional 6-hour timer (matches real NCLEX)
+                - listitem [ref=e70]:
+                  - generic [ref=e71]: •
+                  - generic [ref=e72]: Your progress is automatically saved
+            - generic [ref=e73]:
+              - paragraph [ref=e74]: "Tips for Success:"
+              - list [ref=e75]:
+                - listitem [ref=e76]: • Read each scenario carefully before answering
+                - listitem [ref=e77]: • Use the flag feature to mark questions for review
+                - listitem [ref=e78]: • Review rationales even for correct answers
+                - listitem [ref=e79]: • Take breaks as needed - your progress is saved
+            - button "Begin Practice Test" [ref=e81] [cursor=pointer]:
+              - img [ref=e82]
+              - text: Begin Practice Test
+  - alert [ref=e85]
+```

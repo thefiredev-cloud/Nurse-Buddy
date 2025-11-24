@@ -1,0 +1,52 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e7]:
+        - heading "Sign in to Nurse Buddy" [level=1] [ref=e8]
+        - paragraph [ref=e9]: Welcome back! Please sign in to continue
+      - generic [ref=e10]:
+        - generic [ref=e12]:
+          - button "Sign in with Apple" [ref=e13] [cursor=pointer]:
+            - img "Sign in with Apple" [ref=e14]
+          - button "Sign in with Google" [ref=e15] [cursor=pointer]:
+            - img "Sign in with Google" [ref=e16]
+          - button "Sign in with LinkedIn" [ref=e17] [cursor=pointer]:
+            - img "Sign in with LinkedIn" [ref=e18]
+        - paragraph [ref=e21]: or
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - generic [ref=e27]:
+              - generic [ref=e29]: Email address
+              - textbox "Email address" [ref=e30]:
+                - /placeholder: Enter your email address
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Password
+                  - generic:
+                    - textbox "Password":
+                      - /placeholder: Enter your password
+                    - button "Show password":
+                      - img
+          - button "Continue" [ref=e33] [cursor=pointer]:
+            - generic [ref=e34]:
+              - text: Continue
+              - img [ref=e35]
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]: Don’t have an account?
+        - link "Sign up" [ref=e40] [cursor=pointer]:
+          - /url: https://whole-lemur-59.accounts.dev/sign-up?__clerk_db_jwt=dvb_35wFmlsfsuDo2vS92SoEktwnTNi
+      - generic [ref=e42]:
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: Secured by
+          - link "Clerk logo" [ref=e46] [cursor=pointer]:
+            - /url: https://go.clerk.com/components
+            - img [ref=e47]
+        - paragraph [ref=e52]: Development mode
+  - alert [ref=e53]
+```

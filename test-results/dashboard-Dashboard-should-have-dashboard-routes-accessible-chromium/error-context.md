@@ -1,0 +1,92 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - link "Nurse Buddy" [ref=e6] [cursor=pointer]:
+        - /url: /dashboard
+      - navigation [ref=e7]:
+        - link "Dashboard" [ref=e8] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e9]
+          - generic [ref=e12]: Dashboard
+        - link "New Test" [ref=e13] [cursor=pointer]:
+          - /url: /dashboard/test/new
+          - img [ref=e14]
+          - generic [ref=e17]: New Test
+        - link "Test History" [ref=e18] [cursor=pointer]:
+          - /url: /dashboard/history
+          - img [ref=e19]
+          - generic [ref=e22]: Test History
+        - link "Settings" [ref=e23] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e24]
+          - generic [ref=e27]: Settings
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Pro Access
+        - paragraph [ref=e31]: Unlimited practice tests
+    - generic [ref=e32]:
+      - banner [ref=e33]:
+        - heading "NCLEX Test Prep" [level=1] [ref=e34]
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - paragraph [ref=e38]: Jane Doe
+              - paragraph [ref=e39]: student@example.com
+            - img [ref=e41]
+          - link "Logout" [ref=e44] [cursor=pointer]:
+            - /url: /sign-in
+            - img [ref=e45]
+            - text: Logout
+      - main [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - heading "Welcome Back, Jane!" [level=2] [ref=e51]
+            - paragraph [ref=e52]: Ready to continue your NCLEX preparation?
+          - generic [ref=e53]:
+            - generic [ref=e56]:
+              - generic [ref=e57]:
+                - paragraph [ref=e58]: Tests Taken
+                - paragraph [ref=e59]: "0"
+              - img [ref=e61]
+            - generic [ref=e66]:
+              - generic [ref=e67]:
+                - paragraph [ref=e68]: Average Score
+                - paragraph [ref=e69]: 0%
+              - img [ref=e71]
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - paragraph [ref=e79]: Study Streak
+                - paragraph [ref=e80]: 0 days
+              - img [ref=e82]
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - paragraph [ref=e89]: Study Time
+                - paragraph [ref=e90]: 0h
+              - img [ref=e92]
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - generic [ref=e97]:
+                - heading "Start New Test" [level=3] [ref=e98]
+                - paragraph [ref=e99]: Take a 100-question NCLEX-style practice exam
+              - link "Begin Practice Test" [ref=e101] [cursor=pointer]:
+                - /url: /dashboard/test/new
+                - button "Begin Practice Test" [ref=e102]
+            - generic [ref=e103]:
+              - generic [ref=e104]:
+                - heading "Review Performance" [level=3] [ref=e105]
+                - paragraph [ref=e106]: Analyze your progress and identify weak areas
+              - link "View Analytics" [ref=e108] [cursor=pointer]:
+                - /url: /dashboard/performance
+                - button "View Analytics" [ref=e109]
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - heading "Recent Tests" [level=3] [ref=e112]
+              - paragraph [ref=e113]: Your latest practice test attempts
+            - generic [ref=e115]:
+              - img [ref=e116]
+              - paragraph [ref=e119]: No tests taken yet
+              - paragraph [ref=e120]: Start your first practice test to see results here
+  - alert [ref=e121]
+```

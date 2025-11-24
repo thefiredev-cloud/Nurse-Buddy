@@ -1,0 +1,258 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e5]:
+        - link "Nurse Buddy" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e7]: Nurse Buddy
+        - button [ref=e8] [cursor=pointer]:
+          - img [ref=e9]
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Pass Your NCLEX on the First Try" [level=1] [ref=e14]
+        - paragraph [ref=e15]: AI-powered practice tests that adapt to your learning style with detailed rationales for every answer
+        - generic [ref=e16]:
+          - link "Start Your 100-Question Test Now" [ref=e17] [cursor=pointer]:
+            - /url: /sign-up
+            - button "Start Your 100-Question Test Now" [ref=e18]
+          - paragraph [ref=e19]: $35/month - Unlimited Practice
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic [ref=e24]: Question 45 of 100
+            - generic [ref=e25]: 75% Complete
+          - paragraph [ref=e28]: A nurse is caring for a client with heart failure. Which finding requires immediate intervention?
+          - generic [ref=e29]:
+            - generic [ref=e30]: A. Irregular heart rate with dyspnea
+            - generic [ref=e31]: B. Mild ankle swelling
+            - generic [ref=e32]: C. Decreased appetite
+            - generic [ref=e33]: D. Occasional fatigue
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36]: ✓
+            - generic [ref=e37]: Correct!
+          - paragraph [ref=e38]: "Why: Irregular heart rate with dyspnea indicates acute decompensation requiring immediate assessment and intervention."
+          - paragraph [ref=e40]: "Key Concept: Assess for signs of reduced cardiac output (tachycardia, dyspnea, arrhythmias) in heart failure clients."
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - img [ref=e46]
+          - generic [ref=e49]: 92%
+          - generic [ref=e50]: Pass Rate
+        - generic [ref=e51]:
+          - img [ref=e53]
+          - generic [ref=e56]: 50,000+
+          - generic [ref=e57]: Questions Generated
+        - generic [ref=e58]:
+          - img [ref=e60]
+          - generic [ref=e63]: 5,000+
+          - generic [ref=e64]: Active Students
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - generic [ref=e70]: NCSBN Aligned Content
+        - generic [ref=e71]:
+          - img [ref=e72]
+          - generic [ref=e75]: Updated 2024 Test Plan
+        - generic [ref=e76]:
+          - img [ref=e77]
+          - generic [ref=e80]: Evidence-Based Rationales
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - heading "Who Uses Nurse Buddy?" [level=2] [ref=e84]
+        - paragraph [ref=e85]: Trusted by nursing students at every stage of their NCLEX journey
+      - generic [ref=e86]:
+        - generic [ref=e89]:
+          - img [ref=e91]
+          - heading "Pre-NCLEX Students" [level=3] [ref=e94]
+          - paragraph [ref=e95]: Final year nursing students preparing for licensure
+        - generic [ref=e98]:
+          - img [ref=e100]
+          - heading "NCLEX Retakers" [level=3] [ref=e105]
+          - paragraph [ref=e106]: Students who need targeted practice after initial attempt
+        - generic [ref=e109]:
+          - img [ref=e111]
+          - heading "International Nurses" [level=3] [ref=e114]
+          - paragraph [ref=e115]: Foreign-educated nurses preparing for US licensure
+    - generic [ref=e117]:
+      - generic [ref=e118]:
+        - heading "Traditional NCLEX Prep Falls Short" [level=2] [ref=e119]
+        - paragraph [ref=e120]: Don't waste time and money on outdated preparation methods
+      - generic [ref=e121]:
+        - generic [ref=e122]:
+          - img [ref=e124]
+          - heading "Expensive Test Prep" [level=3] [ref=e126]
+          - paragraph [ref=e127]: Traditional NCLEX prep courses cost $300-500+
+        - generic [ref=e128]:
+          - img [ref=e130]
+          - heading "Outdated Question Banks" [level=3] [ref=e135]
+          - paragraph [ref=e136]: Static questions that don't reflect current exam format
+        - generic [ref=e137]:
+          - img [ref=e139]
+          - heading "No Detailed Rationales" [level=3] [ref=e142]
+          - paragraph [ref=e143]: Limited explanations for understanding concepts
+    - generic [ref=e145]:
+      - generic [ref=e146]:
+        - heading "Why Choose Nurse Buddy?" [level=2] [ref=e147]
+        - paragraph [ref=e148]: The most advanced NCLEX preparation platform available
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - img [ref=e152]
+          - heading "AI-Generated Questions" [level=3] [ref=e154]
+          - paragraph [ref=e155]: Fresh, unique questions every test - never see the same question twice
+        - generic [ref=e156]:
+          - img [ref=e158]
+          - heading "Comprehensive Rationales" [level=3] [ref=e161]
+          - paragraph [ref=e162]: Detailed explanations for every answer choice
+        - generic [ref=e163]:
+          - img [ref=e165]
+          - heading "NCLEX-Style Format" [level=3] [ref=e169]
+          - paragraph [ref=e170]: 100 questions per test, exactly like the real exam
+    - generic [ref=e172]:
+      - generic [ref=e173]:
+        - heading "How It Works" [level=2] [ref=e174]
+        - paragraph [ref=e175]: Get started in three simple steps
+      - generic [ref=e176]:
+        - generic [ref=e178]:
+          - generic [ref=e179]: "1"
+          - heading "Sign Up" [level=3] [ref=e180]
+          - paragraph [ref=e181]: Create your account in 30 seconds
+        - generic [ref=e183]:
+          - generic [ref=e184]: "2"
+          - heading "Take Practice Tests" [level=3] [ref=e185]
+          - paragraph [ref=e186]: 100-question NCLEX-style exams
+        - generic [ref=e188]:
+          - generic [ref=e189]: "3"
+          - heading "Learn from Rationales" [level=3] [ref=e190]
+          - paragraph [ref=e191]: Understand why answers are correct or incorrect
+    - generic [ref=e193]:
+      - generic [ref=e194]:
+        - heading "Everything You Need to Succeed" [level=2] [ref=e195]
+        - paragraph [ref=e196]: All the tools and features to pass your NCLEX with confidence
+      - generic [ref=e197]:
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - img [ref=e202]
+            - heading "Unlimited Practice Tests" [level=3] [ref=e204]
+          - paragraph [ref=e206]: Take as many 100-question tests as you need
+        - generic [ref=e208]:
+          - generic [ref=e209]:
+            - img [ref=e211]
+            - heading "Performance Analytics" [level=3] [ref=e213]
+          - paragraph [ref=e215]: Track your progress across all content areas
+        - generic [ref=e217]:
+          - generic [ref=e218]:
+            - img [ref=e220]
+            - heading "Mobile Responsive" [level=3] [ref=e222]
+          - paragraph [ref=e224]: Study anywhere on any device
+        - generic [ref=e226]:
+          - generic [ref=e227]:
+            - img [ref=e229]
+            - heading "24/7 Access" [level=3] [ref=e232]
+          - paragraph [ref=e234]: Practice whenever fits your schedule
+    - generic [ref=e236]:
+      - generic [ref=e237]:
+        - heading "Simple, Transparent Pricing" [level=2] [ref=e238]
+        - paragraph [ref=e239]: One plan with everything you need. No hidden fees.
+      - generic [ref=e241]:
+        - generic [ref=e242]:
+          - heading "Pro Access" [level=3] [ref=e243]
+          - generic [ref=e244]: $35per month
+          - paragraph [ref=e245]: Everything you need to pass NCLEX
+        - list [ref=e247]:
+          - listitem [ref=e248]:
+            - img [ref=e249]
+            - generic [ref=e251]: Unlimited 100-question tests
+          - listitem [ref=e252]:
+            - img [ref=e253]
+            - generic [ref=e255]: Detailed rationales for every answer
+          - listitem [ref=e256]:
+            - img [ref=e257]
+            - generic [ref=e259]: Performance tracking dashboard
+          - listitem [ref=e260]:
+            - img [ref=e261]
+            - generic [ref=e263]: All NCLEX content areas covered
+          - listitem [ref=e264]:
+            - img [ref=e265]
+            - generic [ref=e267]: Mobile app access
+        - generic [ref=e268]:
+          - link "Start Preparing Today" [ref=e269] [cursor=pointer]:
+            - /url: /sign-up
+            - button "Start Preparing Today" [ref=e270]
+          - paragraph [ref=e271]: 7-day money-back guarantee
+    - generic [ref=e273]:
+      - generic [ref=e274]:
+        - heading "Trusted by Successful Nurses" [level=2] [ref=e275]
+        - paragraph [ref=e276]: See what our students have to say about their NCLEX success
+      - generic [ref=e277]:
+        - generic [ref=e280]:
+          - generic [ref=e281]:
+            - img [ref=e282]
+            - img [ref=e284]
+            - img [ref=e286]
+            - img [ref=e288]
+            - img [ref=e290]
+          - paragraph [ref=e292]: "\"Nurse Buddy helped me pass my NCLEX on the first try! The rationales were incredibly helpful.\""
+          - paragraph [ref=e293]: Sarah M., RN
+        - generic [ref=e296]:
+          - generic [ref=e297]:
+            - img [ref=e298]
+            - img [ref=e300]
+            - img [ref=e302]
+            - img [ref=e304]
+            - img [ref=e306]
+          - paragraph [ref=e308]: "\"The AI-generated questions were spot-on with what I saw on the actual exam.\""
+          - paragraph [ref=e309]: Michael R., BSN
+        - generic [ref=e312]:
+          - generic [ref=e313]:
+            - img [ref=e314]
+            - img [ref=e316]
+            - img [ref=e318]
+            - img [ref=e320]
+            - img [ref=e322]
+          - paragraph [ref=e324]: "\"Worth every penny. I tried other platforms but Nurse Buddy's explanations are unmatched.\""
+          - paragraph [ref=e325]: Jennifer L., RN
+    - generic [ref=e328]:
+      - heading "Ready to Pass Your NCLEX?" [level=2] [ref=e329]
+      - paragraph [ref=e330]: Join thousands of successful nursing students
+      - link "Get Started for $35/month" [ref=e331] [cursor=pointer]:
+        - /url: /sign-up
+        - button "Get Started for $35/month" [ref=e332]
+      - paragraph [ref=e333]: 7-day money-back guarantee
+    - generic [ref=e335]:
+      - generic [ref=e336]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e337]
+        - paragraph [ref=e338]: Everything you need to know about Nurse Buddy
+      - generic [ref=e340]:
+        - heading "How similar are the questions to the actual NCLEX?" [level=3] [ref=e342]:
+          - button "How similar are the questions to the actual NCLEX?" [ref=e343] [cursor=pointer]:
+            - text: How similar are the questions to the actual NCLEX?
+            - img [ref=e344]
+        - heading "Can I retake tests?" [level=3] [ref=e347]:
+          - button "Can I retake tests?" [ref=e348] [cursor=pointer]:
+            - text: Can I retake tests?
+            - img [ref=e349]
+        - heading "Is there a free trial?" [level=3] [ref=e352]:
+          - button "Is there a free trial?" [ref=e353] [cursor=pointer]:
+            - text: Is there a free trial?
+            - img [ref=e354]
+        - heading "How are the questions generated?" [level=3] [ref=e357]:
+          - button "How are the questions generated?" [ref=e358] [cursor=pointer]:
+            - text: How are the questions generated?
+            - img [ref=e359]
+    - generic [ref=e362]:
+      - generic [ref=e363]:
+        - generic [ref=e364]: Nurse Buddy
+        - generic [ref=e365]:
+          - link "Privacy Policy" [ref=e366] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms of Service" [ref=e367] [cursor=pointer]:
+            - /url: /terms
+          - link "Contact Support" [ref=e368] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e369]: © 2024 Nurse Buddy. All rights reserved.
+  - alert [ref=e370]
+```

@@ -1,0 +1,45 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - link "Nurse Buddy" [ref=e6] [cursor=pointer]:
+        - /url: /dashboard
+      - navigation [ref=e7]:
+        - link "Dashboard" [ref=e8] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e9]
+          - generic [ref=e12]: Dashboard
+        - link "New Test" [ref=e13] [cursor=pointer]:
+          - /url: /dashboard/test/new
+          - img [ref=e14]
+          - generic [ref=e17]: New Test
+        - link "Test History" [ref=e18] [cursor=pointer]:
+          - /url: /dashboard/history
+          - img [ref=e19]
+          - generic [ref=e22]: Test History
+        - link "Settings" [ref=e23] [cursor=pointer]:
+          - /url: /dashboard/settings
+          - img [ref=e24]
+          - generic [ref=e27]: Settings
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Pro Access
+        - paragraph [ref=e31]: Unlimited practice tests
+    - generic [ref=e32]:
+      - banner [ref=e33]:
+        - heading "NCLEX Test Prep" [level=1] [ref=e34]
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - paragraph [ref=e38]: Jane Doe
+              - paragraph [ref=e39]: student@example.com
+            - img [ref=e41]
+          - link "Logout" [ref=e44] [cursor=pointer]:
+            - /url: /sign-in
+            - img [ref=e45]
+            - text: Logout
+      - main [ref=e48]:
+        - img [ref=e50]
+  - alert [ref=e52]
+```
