@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useUser, useAuth, SignInButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Loader2 } from "lucide-react";
@@ -9,10 +10,18 @@ import Link from "next/link";
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { user, isLoaded: userLoaded } = useUser();
+  const { isSignedIn, isLoaded: authLoaded } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [checkingSubscription, setCheckingSubscription] = useState(true);
 
-  const handleCheckout = async () => {
+  const handleCheckout = useCallback(async () => {
+    if (!user) {
+      setError("Please sign in to continue");
+      return;
+    }
+
     setLoading(true);
     setError("");
 
@@ -21,8 +30,8 @@ export default function CheckoutPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId: "user_mock_123",
-          email: "student@example.com",
+          userId: user.id,
+          email: user.primaryEmailAddress?.emailAddress || "",
         }),
       });
 
@@ -40,13 +49,81 @@ export default function CheckoutPage() {
       setError("Failed to start checkout. Please try again.");
       setLoading(false);
     }
-  };
+  }, [user, router]);
 
+  // Check if user already has an active subscription
   useEffect(() => {
-    // Auto-start checkout
-    handleCheckout();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const checkSubscription = async () => {
+      if (!userLoaded || !authLoaded) return;
+      
+      if (!isSignedIn || !user) {
+        setCheckingSubscription(false);
+        return;
+      }
+
+      try {
+        const response = await fetch("/api/user/subscription");
+        if (response.ok) {
+          const data = await response.json();
+          if (data.isSubscribed) {
+            // User already has subscription, redirect to dashboard
+            router.push("/dashboard");
+            return;
+          }
+        }
+      } catch (err) {
+        console.error("Error checking subscription:", err);
+      }
+      
+      setCheckingSubscription(false);
+      // Auto-start checkout for authenticated users without subscription
+      handleCheckout();
+    };
+
+    checkSubscription();
+  }, [userLoaded, authLoaded, isSignedIn, user, router, handleCheckout]);
+
+  // Loading state
+  if (!userLoaded || !authLoaded || checkingSubscription) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        <Card className="max-w-md w-full">
+          <CardContent className="py-12">
+            <div className="flex flex-col items-center justify-center">
+              <Loader2 className="w-12 h-12 animate-spin text-nursing-blue mb-4" />
+              <p className="text-gray-600">Loading...</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  // Not signed in - show sign in prompt
+  if (!isSignedIn || !user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        <Card className="max-w-md w-full">
+          <CardHeader>
+            <CardTitle>Sign In Required</CardTitle>
+            <CardDescription>
+              Please sign in to subscribe to Nurse Buddy Pro
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <SignInButton mode="modal">
+              <Button className="w-full" size="lg">
+                Sign In to Continue
+              </Button>
+            </SignInButton>
+            <Link href="/" className="block text-center text-sm text-gray-600 hover:text-gray-900">
+              Back to Home
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
