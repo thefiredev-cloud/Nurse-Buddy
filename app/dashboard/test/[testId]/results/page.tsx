@@ -130,7 +130,7 @@ export default function TestResultsPage() {
             </p>
             {test.score >= 75 && (
               <p className="text-green-700 font-semibold mt-2">
-                Excellent! You're well prepared for the NCLEX.
+                Excellent! You&apos;re well prepared for the NCLEX.
               </p>
             )}
             {test.score >= 60 && test.score < 75 && (

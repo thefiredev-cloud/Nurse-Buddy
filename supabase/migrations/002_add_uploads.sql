@@ -56,3 +56,4 @@ CREATE POLICY "Users can view own upload quota" ON user_uploads
 
 CREATE POLICY "Users can update own upload quota" ON user_uploads
   FOR UPDATE USING (auth.uid()::text = user_id);
+

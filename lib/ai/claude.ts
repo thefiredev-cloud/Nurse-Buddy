@@ -133,9 +133,12 @@ export async function generateNCLEXTest(): Promise<NCLEXQuestion[]> {
     "Physiological Integrity": 50,
   };
 
+  // Use real Claude API if available, otherwise use mock questions
+  const generateQuestion = claude ? generateQuestionWithClaude : generateMockQuestion;
+
   for (const [category, count] of Object.entries(distribution)) {
     for (let i = 0; i < count; i++) {
-      const question = await generateMockQuestion(category as NCLEXCategory);
+      const question = await generateQuestion(category as NCLEXCategory);
       questions.push({
         ...question,
         id: `q_${Date.now()}_${i}_${category.slice(0, 3)}`,

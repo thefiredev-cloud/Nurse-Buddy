@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
   name TEXT NOT NULL,
   stripe_customer_id TEXT UNIQUE,
   subscription_status TEXT DEFAULT 'inactive' CHECK (subscription_status IN ('active', 'inactive', 'cancelled', 'past_due')),
+  preferences JSONB DEFAULT '{"timer_enabled": true, "show_rationales_immediately": false}'::jsonb,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -139,6 +140,7 @@ COMMENT ON TABLE users IS 'Stores user account information and subscription stat
 COMMENT ON TABLE tests IS 'Stores NCLEX practice test data including questions and answers';
 COMMENT ON TABLE performance IS 'Tracks user performance across NCLEX categories over time';
 COMMENT ON COLUMN users.subscription_status IS 'Current Stripe subscription status';
+COMMENT ON COLUMN users.preferences IS 'JSONB object storing user preferences (timer_enabled, show_rationales_immediately)';
 COMMENT ON COLUMN tests.questions IS 'JSONB array of question objects with answers and rationales';
 COMMENT ON COLUMN tests.answers IS 'JSONB object mapping question IDs to user answers';
 

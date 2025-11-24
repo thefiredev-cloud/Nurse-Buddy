@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Home, FileText, Settings, BookOpen } from "lucide-react";
+import { Home, FileText, Settings, BookOpen, Upload, BarChart2 } from "lucide-react";
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -11,7 +11,9 @@ export function Sidebar() {
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: Home },
     { name: "New Test", href: "/dashboard/test/new", icon: BookOpen },
+    { name: "My Materials", href: "/dashboard/uploads", icon: Upload },
     { name: "Test History", href: "/dashboard/history", icon: FileText },
+    { name: "Performance", href: "/dashboard/performance", icon: BarChart2 },
     { name: "Settings", href: "/dashboard/settings", icon: Settings },
   ];
 

@@ -1,8 +1,37 @@
+/**
+ * OpenAI Integration Module for NCLEX Rationale Generation
+ * 
+ * STATUS: Alternative provider (currently unused, Claude is primary)
+ * 
+ * This module provides an alternative AI provider for generating educational
+ * rationales using OpenAI's GPT-4o-mini model. It can be used as:
+ * 
+ * 1. COST OPTIMIZATION: GPT-4o-mini is often more cost-effective than Claude
+ *    for high-volume rationale generation
+ * 
+ * 2. FALLBACK PROVIDER: Can be integrated as a fallback when Claude is unavailable
+ * 
+ * 3. A/B TESTING: Test response quality between providers
+ * 
+ * INTEGRATION EXAMPLE:
+ * To use OpenAI for rationales instead of Claude, update app/api/test/submit/route.ts:
+ * 
+ *   import { generateRationale } from "@/lib/ai/openai";
+ *   // ...
+ *   const rationale = await generateRationale({
+ *     scenario,
+ *     question,
+ *     selectedAnswer,
+ *     correctAnswer,
+ *   });
+ * 
+ * REQUIRED ENV VAR: OPENAI_API_KEY
+ */
 import OpenAI from "openai";
 
 const apiKey = process.env.OPENAI_API_KEY || "";
 
-// Initialize OpenAI client
+// Initialize OpenAI client (null if API key not configured)
 export const openai = apiKey
   ? new OpenAI({ apiKey })
   : null;

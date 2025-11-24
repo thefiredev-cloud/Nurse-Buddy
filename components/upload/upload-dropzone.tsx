@@ -115,10 +115,52 @@ export function UploadDropzone({
 
       const files = e.dataTransfer.files;
       if (files.length > 0) {
-        uploadFile(files[0]);
+        const file = files[0];
+        const validationError = validateFile(file);
+        if (validationError) {
+          setError(validationError);
+          onUploadError?.(validationError);
+          return;
+        }
+
+        setError(null);
+        setSuccess(false);
+        setIsUploading(true);
+        onUploadStart?.();
+
+        fetch("/api/upload", {
+          method: "POST",
+          body: (() => {
+            const formData = new FormData();
+            formData.append("file", file);
+            return formData;
+          })(),
+        })
+          .then(async (response) => {
+            if (!response.ok) {
+              const data = await response.json();
+              throw new Error(data.message || data.error || "Upload failed");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setSuccess(true);
+            onUploadSuccess?.(data.upload.id, data.upload.filename);
+            setTimeout(() => setSuccess(false), 3000);
+          })
+          .catch((err) => {
+            const errorMessage =
+              err instanceof Error ? err.message : "Unknown error occurred";
+            setError(errorMessage);
+            onUploadError?.(errorMessage);
+          })
+          .finally(() => {
+            setIsUploading(false);
+            setIsDragging(false);
+          });
       }
     },
-    [disabled, isUploading]
+    [disabled, isUploading, onUploadStart, onUploadSuccess, onUploadError]
   );
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {

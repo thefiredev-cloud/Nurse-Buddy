@@ -57,7 +57,7 @@ export function WeakTopics({ data }: WeakTopicsProps) {
             <CheckCircle2 className="w-8 h-8 text-green-600 mx-auto mb-2" />
             <p className="text-green-900 font-medium">Great job!</p>
             <p className="text-sm text-green-700">
-              You're performing well in all categories.
+              You&apos;re performing well in all categories.
             </p>
           </div>
         ) : (

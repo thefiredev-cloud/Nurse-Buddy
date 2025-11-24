@@ -1,6 +1,49 @@
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { stripe } from "@/lib/stripe";
+import { updateUserSubscription } from "@/lib/database/queries";
+import { db } from "@/lib/supabase";
+import type Stripe from "stripe";
+
+/**
+ * Maps Stripe subscription status to our internal status
+ */
+function mapSubscriptionStatus(
+  stripeStatus: Stripe.Subscription.Status
+): "active" | "inactive" | "cancelled" | "past_due" {
+  switch (stripeStatus) {
+    case "active":
+    case "trialing":
+      return "active";
+    case "past_due":
+      return "past_due";
+    case "canceled":
+    case "unpaid":
+      return "cancelled";
+    default:
+      return "inactive";
+  }
+}
+
+/**
+ * Gets userId from Stripe customer ID by querying the database
+ */
+async function getUserIdByCustomerId(customerId: string): Promise<string | null> {
+  if (!db) return null;
+  
+  const { data, error } = await (db as any)
+    .from("users")
+    .select("id")
+    .eq("stripe_customer_id", customerId)
+    .single();
+
+  if (error || !data) {
+    console.error("Error finding user by customer ID:", error);
+    return null;
+  }
+
+  return data.id;
+}
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -12,7 +55,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ received: true });
   }
 
-  let event;
+  let event: Stripe.Event;
 
   try {
     if (!signature || !stripe) {
@@ -36,34 +79,75 @@ export async function POST(req: Request) {
   try {
     switch (event.type) {
       case "checkout.session.completed": {
-        const session = event.data.object;
+        const session = event.data.object as Stripe.Checkout.Session;
         console.log("Checkout session completed:", session.id);
 
-        // Update user subscription status in database
-        // TODO: Implement when Supabase is configured
         const userId = session.metadata?.userId;
-        const customerId = session.customer;
+        const customerId = session.customer as string;
 
-        console.log("Activating subscription for user:", userId);
+        if (userId && customerId) {
+          // Update user with Stripe customer ID and active subscription
+          const updated = await updateUserSubscription(userId, customerId, "active");
+          if (updated) {
+            console.log("Successfully activated subscription for user:", userId);
+          } else {
+            console.error("Failed to update subscription for user:", userId);
+          }
+        } else {
+          console.error("Missing userId or customerId in checkout session");
+        }
         break;
       }
 
-      case "customer.subscription.updated":
-      case "customer.subscription.deleted": {
-        const subscription = event.data.object;
+      case "customer.subscription.updated": {
+        const subscription = event.data.object as Stripe.Subscription;
         console.log("Subscription updated:", subscription.id);
 
-        // Update subscription status in database
-        // TODO: Implement when Supabase is configured
+        const customerId = subscription.customer as string;
+        const userId = await getUserIdByCustomerId(customerId);
+
+        if (userId) {
+          const status = mapSubscriptionStatus(subscription.status);
+          const updated = await updateUserSubscription(userId, customerId, status);
+          if (updated) {
+            console.log(`Subscription status updated to ${status} for user:`, userId);
+          }
+        }
+        break;
+      }
+
+      case "customer.subscription.deleted": {
+        const subscription = event.data.object as Stripe.Subscription;
+        console.log("Subscription deleted:", subscription.id);
+
+        const customerId = subscription.customer as string;
+        const userId = await getUserIdByCustomerId(customerId);
+
+        if (userId) {
+          const updated = await updateUserSubscription(userId, customerId, "cancelled");
+          if (updated) {
+            console.log("Subscription cancelled for user:", userId);
+          }
+        }
         break;
       }
 
       case "invoice.payment_failed": {
-        const invoice = event.data.object;
-        console.log("Payment failed:", invoice.id);
+        const invoice = event.data.object as Stripe.Invoice;
+        console.log("Payment failed for invoice:", invoice.id);
 
-        // Handle failed payment
-        // TODO: Implement notification to user
+        const customerId = invoice.customer as string;
+        const userId = await getUserIdByCustomerId(customerId);
+
+        if (userId) {
+          // Mark subscription as past_due
+          const updated = await updateUserSubscription(userId, customerId, "past_due");
+          if (updated) {
+            console.log("Marked subscription as past_due for user:", userId);
+          }
+          // Note: Email notifications should be handled by Stripe's built-in email system
+          // or a separate notification service
+        }
         break;
       }
 

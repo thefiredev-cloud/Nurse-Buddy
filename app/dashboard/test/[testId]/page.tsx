@@ -7,6 +7,7 @@ import { ProgressBar } from "@/components/test/progress-bar";
 import { Timer } from "@/components/test/timer";
 import { RationalePanel } from "@/components/test/rationale-panel";
 import { NavigationControls } from "@/components/test/navigation-controls";
+import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { NCLEXQuestion } from "@/lib/ai/claude";
 
