@@ -5,6 +5,8 @@
 [build.environment]
   NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
+  # Exclude NEXT_PUBLIC_* keys from secrets scanning - they're intentionally public
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_APP_URL,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
 
 # Next.js plugin for Netlify
 [[plugins]]
