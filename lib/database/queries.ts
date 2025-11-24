@@ -19,7 +19,7 @@ export async function getUserById(userId: string): Promise<User | null> {
   return data;
 }
 
-export async function createUser(user: Omit<User, "id" | "created_at" | "updated_at">): Promise<User | null> {
+export async function createUser(user: Omit<User, "created_at" | "updated_at">): Promise<User | null> {
   if (!db) return null;
 
   const { data, error } = await (db as any)

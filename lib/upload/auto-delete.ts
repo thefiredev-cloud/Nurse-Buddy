@@ -17,7 +17,7 @@ export async function deleteExpiredUploads() {
       .from("uploads")
       .select("uploads.id, uploads.file_path, uploads.user_id")
       .lt("expires_at", new Date().toISOString())
-      .then(async (result) => {
+      .then(async (result: { data: any[] | null; error: any }) => {
         if (result.error) return result;
 
         // Filter by unsubscribed users

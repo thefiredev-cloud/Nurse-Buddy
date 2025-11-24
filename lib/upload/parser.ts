@@ -29,7 +29,7 @@ export async function parsePowerPoint(fileBuffer: Buffer): Promise<ParsedContent
       return mockParsedContent;
     }
 
-    const result = await mammoth.convertToHtml({ arrayBuffer: fileBuffer.buffer });
+    const result = await mammoth.convertToHtml({ arrayBuffer: fileBuffer.buffer as ArrayBuffer });
     const plainText = result.value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ");
 
     return {
@@ -56,11 +56,12 @@ export async function parsePDF(fileBuffer: Buffer): Promise<ParsedContent> {
 
   try {
     // Attempt to use pdfparse if available
-    const pdfParse = await import("pdf-parse").catch(() => null);
-    if (!pdfParse) {
+    const pdfParseModule = await import("pdf-parse").catch(() => null);
+    if (!pdfParseModule) {
       return mockParsedContent;
     }
 
+    const pdfParse = pdfParseModule.default;
     const data = await pdfParse(fileBuffer);
     const text = data.text || "";
 

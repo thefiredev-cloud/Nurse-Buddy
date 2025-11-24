@@ -365,8 +365,8 @@ Generate exactly ${questionCount} questions. Only return the JSON array, no othe
       const questions: NCLEXQuestion[] = Array.isArray(parsed) ? parsed : [parsed];
 
       return questions.map((q, idx) => ({
-        id: `q_${Date.now()}_${idx}`,
         ...q,
+        id: `q_${Date.now()}_${idx}`,
       }));
     }
   } catch (error) {
