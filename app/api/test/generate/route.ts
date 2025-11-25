@@ -1,28 +1,57 @@
 import { NextResponse } from "next/server";
 import { generateNCLEXTest } from "@/lib/ai/claude";
-import { createTest } from "@/lib/database/queries";
+import { createTest, createUser, getUserById } from "@/lib/database/queries";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { mockUser } from "@/lib/auth-mock";
 
-async function getUserId() {
+async function ensureUserExists() {
   try {
+    const user = await currentUser();
     const { userId } = auth();
-    if (userId) return userId;
+    
+    if (!user || !userId) {
+      // Fallback to mock user in development
+      if (process.env.NODE_ENV === "development" && !process.env.CLERK_SECRET_KEY) {
+        return mockUser.id;
+      }
+      return null;
+    }
+
+    // Check if user exists in database
+    const existingUser = await getUserById(userId);
+    
+    if (!existingUser) {
+      // Create user in database (webhook might not have fired)
+      console.log("Creating user in database:", userId);
+      const newUser = await createUser({
+        id: userId,
+        email: user.primaryEmailAddress?.emailAddress || "",
+        name: user.fullName || `${user.firstName || ""} ${user.lastName || ""}`.trim() || "User",
+        stripe_customer_id: null,
+        subscription_status: "inactive",
+      });
+      
+      if (!newUser) {
+        console.error("Failed to create user in database:", userId);
+        return null;
+      }
+    }
+
+    return userId;
   } catch (error) {
-    // Clerk might not be configured
+    console.error("Error ensuring user exists:", error);
+    
+    // Fallback to mock user in development
+    if (process.env.NODE_ENV === "development" && !process.env.CLERK_SECRET_KEY) {
+      return mockUser.id;
+    }
+    return null;
   }
-  
-  // Fallback to mock user in development
-  if (process.env.NODE_ENV === "development" && !process.env.CLERK_SECRET_KEY) {
-    return mockUser.id;
-  }
-  
-  return null;
 }
 
 export async function POST(req: Request) {
   try {
-    const userId = await getUserId();
+    const userId = await ensureUserExists();
     
     if (!userId) {
       return NextResponse.json(
