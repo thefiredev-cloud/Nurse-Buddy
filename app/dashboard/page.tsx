@@ -1,8 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { BookOpen, TrendingUp, Clock, Target, ArrowRight, Calendar } from "lucide-react";
-import { getUserStats, getUserTests } from "@/lib/database/queries";
+import { BookOpen, TrendingUp, Clock, Target, ArrowRight, Calendar, Crown, Zap } from "lucide-react";
+import { getUserStats, getUserTests, getUserSubscriptionStatus, FREE_TIER_TEST_LIMIT } from "@/lib/database/queries";
 import { mockUser } from "@/lib/auth-mock";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
@@ -28,9 +28,10 @@ async function getUserData() {
 export default async function DashboardPage() {
   const user = await getUserData();
   
-  const [stats, recentTests] = await Promise.all([
+  const [stats, recentTests, subscriptionStatus] = await Promise.all([
     getUserStats(user.id),
-    getUserTests(user.id, 5)
+    getUserTests(user.id, 5),
+    getUserSubscriptionStatus(user.id),
   ]);
 
   const statCards = [
@@ -75,6 +76,63 @@ export default async function DashboardPage() {
           Ready to continue your NCLEX preparation?
         </p>
       </div>
+
+      {/* Subscription Status Card */}
+      {!subscriptionStatus.isSubscribed && (
+        <Card className="border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Zap className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">
+                    Free Plan: {subscriptionStatus.testCount}/{FREE_TIER_TEST_LIMIT} tests used
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {subscriptionStatus.testCount < FREE_TIER_TEST_LIMIT 
+                      ? `${FREE_TIER_TEST_LIMIT - subscriptionStatus.testCount} free tests remaining`
+                      : "Upgrade for unlimited tests"
+                    }
+                  </p>
+                </div>
+              </div>
+              <Link href="/dashboard/subscription">
+                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                  <Crown className="w-4 h-4 mr-2" />
+                  Upgrade to Pro
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {subscriptionStatus.isSubscribed && (
+        <Card className="border-yellow-200 bg-gradient-to-r from-yellow-50 to-orange-50">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                  <Crown className="w-6 h-6 text-yellow-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">Pro Plan Active</p>
+                  <p className="text-sm text-gray-600">
+                    Unlimited tests • {subscriptionStatus.testCount} tests taken
+                  </p>
+                </div>
+              </div>
+              <Link href="/dashboard/subscription">
+                <Button variant="outline">
+                  Manage Subscription
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -151,6 +151,48 @@ export async function POST(req: Request) {
         break;
       }
 
+      case "invoice.paid": {
+        const invoice = event.data.object as Stripe.Invoice;
+        console.log("Invoice paid:", invoice.id);
+
+        // This handles subscription renewals
+        if (invoice.billing_reason === "subscription_cycle") {
+          const customerId = invoice.customer as string;
+          const userId = await getUserIdByCustomerId(customerId);
+
+          if (userId) {
+            // Ensure subscription is marked as active after successful payment
+            const updated = await updateUserSubscription(userId, customerId, "active");
+            if (updated) {
+              console.log("Subscription renewed for user:", userId);
+            }
+          }
+        }
+        break;
+      }
+
+      case "customer.subscription.created": {
+        const subscription = event.data.object as Stripe.Subscription;
+        console.log("Subscription created:", subscription.id);
+
+        const customerId = subscription.customer as string;
+        
+        // Try to find user by customer ID first (in case customer was linked before)
+        let userId = await getUserIdByCustomerId(customerId);
+
+        if (userId) {
+          const status = mapSubscriptionStatus(subscription.status);
+          const updated = await updateUserSubscription(userId, customerId, status);
+          if (updated) {
+            console.log(`New subscription ${status} for user:`, userId);
+          }
+        } else {
+          console.log("No user found for new subscription customer:", customerId);
+          // User will be linked via checkout.session.completed event
+        }
+        break;
+      }
+
       default:
         console.log("Unhandled event type:", event.type);
     }

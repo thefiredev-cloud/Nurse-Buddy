@@ -271,3 +271,4 @@ The webhook handler (`app/api/webhooks/clerk/route.ts`) integrates with:
 **Required Events**: `user.created`  
 **Verification**: Automatic via `verifyWebhook()` from `@clerk/nextjs/server`
 
+

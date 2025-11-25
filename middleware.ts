@@ -6,6 +6,7 @@ import type { NextRequest } from 'next/server';
 const isProtectedRoute = createRouteMatcher([
   '/dashboard(.*)',
   '/checkout(.*)',
+  '/admin(.*)',
 ]);
 
 // Define public routes that don't require auth

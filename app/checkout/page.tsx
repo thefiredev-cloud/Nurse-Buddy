@@ -77,7 +77,7 @@ export default function CheckoutPage() {
       
       setCheckingSubscription(false);
       // Auto-start checkout for authenticated users without subscription
-      handleCheckout();
+    handleCheckout();
     };
 
     checkSubscription();

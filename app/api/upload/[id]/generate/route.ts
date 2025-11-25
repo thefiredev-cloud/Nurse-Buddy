@@ -3,6 +3,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { getUploadById } from "@/lib/upload/storage";
 import { generateQuestionsFromContent } from "@/lib/ai/claude";
 import { db } from "@/lib/supabase";
+import { canUserCreateTest } from "@/lib/database/queries";
 
 export async function POST(
   req: NextRequest,
@@ -14,6 +15,22 @@ export async function POST(
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
+      );
+    }
+
+    // Check if user can create a test (subscription or free tier limit)
+    const testAccess = await canUserCreateTest(user.id);
+    
+    if (!testAccess.allowed) {
+      return NextResponse.json(
+        { 
+          error: "Free tier limit reached",
+          message: testAccess.reason,
+          testsUsed: testAccess.testsUsed,
+          testsLimit: testAccess.testsLimit,
+          requiresUpgrade: true,
+        },
+        { status: 403 }
       );
     }
 

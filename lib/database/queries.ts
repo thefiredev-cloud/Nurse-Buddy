@@ -1,6 +1,9 @@
 import { db } from "@/lib/supabase";
 import type { User, Test, Performance, CategoryPerformance, UserStats } from "./schema";
 
+// Constants
+export const FREE_TIER_TEST_LIMIT = 2;
+
 // User queries
 export async function getUserById(userId: string): Promise<User | null> {
   if (!db) return null;
@@ -335,6 +338,82 @@ export async function getUserStats(userId: string): Promise<UserStats> {
     total_questions_answered,
     study_streak_days: streak,
     total_study_hours,
+  };
+}
+
+// Subscription and test limit queries
+export async function getUserTestCount(userId: string): Promise<number> {
+  if (!db) return 0;
+
+  const { data, error } = await (db as any)
+    .from("tests")
+    .select("id")
+    .eq("user_id", userId);
+
+  if (error) {
+    console.error("Error fetching test count:", error);
+    return 0;
+  }
+
+  return data?.length || 0;
+}
+
+export async function getUserSubscriptionStatus(
+  userId: string
+): Promise<{ isSubscribed: boolean; status: string; testCount: number }> {
+  if (!db) {
+    return { isSubscribed: false, status: "inactive", testCount: 0 };
+  }
+
+  const [user, testCount] = await Promise.all([
+    getUserById(userId),
+    getUserTestCount(userId),
+  ]);
+
+  const isSubscribed = user?.subscription_status === "active";
+
+  return {
+    isSubscribed,
+    status: user?.subscription_status || "inactive",
+    testCount,
+  };
+}
+
+export async function canUserCreateTest(userId: string): Promise<{
+  allowed: boolean;
+  reason?: string;
+  testsUsed: number;
+  testsLimit: number;
+  isSubscribed: boolean;
+}> {
+  const { isSubscribed, testCount } = await getUserSubscriptionStatus(userId);
+
+  // Subscribed users have unlimited tests
+  if (isSubscribed) {
+    return {
+      allowed: true,
+      testsUsed: testCount,
+      testsLimit: Infinity,
+      isSubscribed: true,
+    };
+  }
+
+  // Free users limited to FREE_TIER_TEST_LIMIT tests
+  if (testCount >= FREE_TIER_TEST_LIMIT) {
+    return {
+      allowed: false,
+      reason: `Free tier limit reached. You've used ${testCount}/${FREE_TIER_TEST_LIMIT} tests. Upgrade to Pro for unlimited tests.`,
+      testsUsed: testCount,
+      testsLimit: FREE_TIER_TEST_LIMIT,
+      isSubscribed: false,
+    };
+  }
+
+  return {
+    allowed: true,
+    testsUsed: testCount,
+    testsLimit: FREE_TIER_TEST_LIMIT,
+    isSubscribed: false,
   };
 }
 

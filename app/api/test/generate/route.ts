@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { generateNCLEXTest } from "@/lib/ai/claude";
-import { createTest, createUser, getUserById } from "@/lib/database/queries";
+import { createTest, createUser, getUserById, canUserCreateTest } from "@/lib/database/queries";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { mockUser } from "@/lib/auth-mock";
 
@@ -40,12 +40,12 @@ async function ensureUserExists() {
     return userId;
   } catch (error) {
     console.error("Error ensuring user exists:", error);
-    
-    // Fallback to mock user in development
-    if (process.env.NODE_ENV === "development" && !process.env.CLERK_SECRET_KEY) {
-      return mockUser.id;
-    }
-    return null;
+  
+  // Fallback to mock user in development
+  if (process.env.NODE_ENV === "development" && !process.env.CLERK_SECRET_KEY) {
+    return mockUser.id;
+  }
+  return null;
   }
 }
 
@@ -57,6 +57,22 @@ export async function POST(req: Request) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
+      );
+    }
+
+    // Check if user can create a test (subscription or free tier limit)
+    const testAccess = await canUserCreateTest(userId);
+    
+    if (!testAccess.allowed) {
+      return NextResponse.json(
+        { 
+          error: "Free tier limit reached",
+          message: testAccess.reason,
+          testsUsed: testAccess.testsUsed,
+          testsLimit: testAccess.testsLimit,
+          requiresUpgrade: true,
+        },
+        { status: 403 }
       );
     }
 

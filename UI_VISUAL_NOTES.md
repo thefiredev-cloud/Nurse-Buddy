@@ -123,3 +123,4 @@ The UI is clean, professional, and functional. No critical visual issues were fo
 3. Test dark mode if implemented
 4. Run accessibility audit tools
 
+

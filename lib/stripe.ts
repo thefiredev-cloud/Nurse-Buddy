@@ -11,10 +11,12 @@ export const stripe = stripeSecretKey
   : null;
 
 // Stripe configuration
+// Use the actual price ID from Stripe: price_1SUdJg4xNyT5QbNLhFvg11CL ($35/month)
 export const stripeConfig = {
   publishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
-  priceId: process.env.STRIPE_PRICE_ID || "price_mock_35_monthly",
+  priceId: process.env.STRIPE_PRICE_ID || "price_1SUdJg4xNyT5QbNLhFvg11CL",
   webhookSecret: process.env.STRIPE_WEBHOOK_SECRET || "",
+  productId: "prod_TRWMYk3dEpQS2l",
 };
 
 // Mock Stripe for development

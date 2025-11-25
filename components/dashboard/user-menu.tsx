@@ -54,9 +54,9 @@ export function UserMenu() {
             className="rounded-full object-cover"
           />
         ) : (
-          <div className="w-10 h-10 bg-nursing-blue rounded-full flex items-center justify-center">
-            <User className="w-5 h-5 text-white" />
-          </div>
+        <div className="w-10 h-10 bg-nursing-blue rounded-full flex items-center justify-center">
+          <User className="w-5 h-5 text-white" />
+        </div>
         )}
       </div>
 
@@ -69,12 +69,12 @@ export function UserMenu() {
           </Button>
         </SignOutButton>
       ) : (
-        <Button variant="ghost" size="sm" asChild>
-          <a href="/sign-in">
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </a>
-        </Button>
+      <Button variant="ghost" size="sm" asChild>
+        <a href="/sign-in">
+          <LogOut className="w-4 h-4 mr-2" />
+          Logout
+        </a>
+      </Button>
       )}
     </div>
   );
