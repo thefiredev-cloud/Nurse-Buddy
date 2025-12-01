@@ -1,31 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, CheckCircle, TrendingUp } from "lucide-react";
+import { Upload, Brain, BookOpen, Zap, CheckCircle } from "lucide-react";
 
 export function SocialProof() {
-  const metrics = [
-    { number: "92%", label: "Pass Rate", icon: TrendingUp },
-    { number: "50,000+", label: "Questions Generated", icon: CheckCircle },
-    { number: "5,000+", label: "Active Students", icon: Award },
+  const features = [
+    { icon: Upload, label: "Upload Any Slides", description: "PPT, PPTX, or PDF" },
+    { icon: Brain, label: "AI-Powered Questions", description: "From your content" },
+    { icon: BookOpen, label: "Detailed Rationales", description: "For every answer" },
   ];
 
   const badges = [
-    "NCSBN Aligned Content",
-    "Updated 2024 Test Plan",
-    "Evidence-Based Rationales",
+    "Study Your Own Materials",
+    "100-Question Practice Tests",
+    "Instant AI Feedback",
   ];
 
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Metrics */}
+        {/* Features */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {metrics.map((metric, index) => {
-            const Icon = metric.icon;
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
             return (
               <motion.div
-                key={metric.label}
+                key={feature.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -35,10 +35,10 @@ export function SocialProof() {
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-nursing-light rounded-full mb-4">
                   <Icon className="w-6 h-6 text-nursing-blue" />
                 </div>
-                <div className="text-4xl font-bold text-nursing-blue mb-2">
-                  {metric.number}
+                <div className="text-xl font-bold text-nursing-blue mb-2">
+                  {feature.label}
                 </div>
-                <div className="text-gray-600">{metric.label}</div>
+                <div className="text-gray-600">{feature.description}</div>
               </motion.div>
             );
           })}
