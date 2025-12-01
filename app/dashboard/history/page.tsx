@@ -6,6 +6,7 @@ import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { Clock, Calendar, ArrowRight, BookOpen, CheckCircle2, PlayCircle } from "lucide-react";
 import type { Test } from "@/lib/database/schema";
+import { EndTestButton } from "@/components/test/end-test-button";
 
 async function getUserId() {
   try {
@@ -148,12 +149,17 @@ export default async function HistoryPage() {
                         )}
                       </div>
                     </div>
-                    <Link href={isCompleted ? `/dashboard/test/${test.id}/results` : `/dashboard/test/${test.id}`}>
-                      <Button variant="ghost" size="sm">
-                        {isCompleted ? 'View Results' : 'Resume'}
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </Link>
+                    <div className="flex items-center gap-2">
+                      {!isCompleted && (
+                        <EndTestButton testId={test.id} />
+                      )}
+                      <Link href={isCompleted ? `/dashboard/test/${test.id}/results` : `/dashboard/test/${test.id}`}>
+                        <Button variant="ghost" size="sm">
+                          {isCompleted ? 'View Results' : 'Resume'}
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 );
               })}

@@ -8,7 +8,7 @@ import { Timer } from "@/components/test/timer";
 import { RationalePanel } from "@/components/test/rationale-panel";
 import { NavigationControls } from "@/components/test/navigation-controls";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 import { NCLEXQuestion } from "@/lib/ai/claude";
 
 export default function TestPage() {
@@ -25,6 +25,7 @@ export default function TestPage() {
   const [flagged, setFlagged] = useState<Set<number>>(new Set());
   const [answers, setAnswers] = useState<Record<number, "A" | "B" | "C" | "D">>({});
   const [isCompleting, setIsCompleting] = useState(false);
+  const [isEnding, setIsEnding] = useState(false);
 
   useEffect(() => {
     const loadTest = async () => {
@@ -249,12 +250,57 @@ export default function TestPage() {
     }
   };
 
+  const handleEndTest = async () => {
+    if (!confirm("Are you sure you want to end this test? Your current progress will be saved and scored based on answered questions.")) {
+      return;
+    }
+
+    setIsEnding(true);
+    try {
+      const response = await fetch("/api/test/abandon", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ testId }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to end test");
+      }
+
+      // Redirect to results page
+      router.push(`/dashboard/test/${testId}/results`);
+    } catch (error) {
+      console.error("Error ending test:", error);
+      alert(error instanceof Error ? error.message : "Failed to end test");
+      setIsEnding(false);
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900">Practice Test</h1>
-        <Timer startTime={new Date(test.startTime)} />
+        <div className="flex items-center gap-4">
+          <Timer startTime={new Date(test.startTime)} />
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleEndTest}
+            disabled={isEnding}
+            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+          >
+            {isEnding ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <>
+                <X className="w-4 h-4 mr-1" />
+                End Test
+              </>
+            )}
+          </Button>
+        </div>
       </div>
 
       {/* Progress */}
