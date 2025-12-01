@@ -30,7 +30,7 @@ export default function SuccessPage() {
           </div>
           <CardTitle className="text-2xl">Welcome to Nurse Buddy!</CardTitle>
           <CardDescription>
-            Your subscription is active. Let&apos;s start preparing for your NCLEX.
+            Your subscription is active. Let&apos;s start acing your nursing exams.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -41,7 +41,7 @@ export default function SuccessPage() {
             <ul className="text-sm text-gray-600 space-y-1">
               <li>• Take your first 100-question practice test</li>
               <li>• Review detailed rationales for every answer</li>
-              <li>• Track your progress across NCLEX categories</li>
+              <li>• Track your progress across nursing categories</li>
             </ul>
           </div>
 

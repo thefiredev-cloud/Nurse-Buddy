@@ -7,18 +7,18 @@ export function PainPoints() {
   const painPoints = [
     {
       icon: DollarSign,
-      title: "Expensive Test Prep",
-      description: "Traditional NCLEX prep courses cost $300-500+",
+      title: "Generic Study Materials",
+      description: "Pre-made tests don't match YOUR professor's content",
     },
     {
       icon: FileX,
-      title: "Outdated Question Banks",
-      description: "Static questions that don't reflect current exam format",
+      title: "Re-Reading Slides",
+      description: "Passive studying doesn't prepare you for exam questions",
     },
     {
       icon: HelpCircle,
-      title: "No Detailed Rationales",
-      description: "Limited explanations for understanding concepts",
+      title: "Making Flashcards Manually",
+      description: "Hours spent creating study materials instead of learning",
     },
   ];
 
@@ -33,10 +33,10 @@ export function PainPoints() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Traditional NCLEX Prep Falls Short
+            Traditional Studying Wastes Time
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don&apos;t waste time and money on outdated preparation methods
+            Stop re-reading slides and start practicing with real questions
           </p>
         </motion.div>
 

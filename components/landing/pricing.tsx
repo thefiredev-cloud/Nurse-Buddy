@@ -8,11 +8,11 @@ import Link from "next/link";
 
 export function Pricing() {
   const features = [
+    "Upload PowerPoints & PDFs",
     "Unlimited 100-question tests",
-    "Detailed rationales for every answer",
+    "AI rationales from your content",
     "Performance tracking dashboard",
-    "All NCLEX content areas covered",
-    "Mobile app access",
+    "Mobile access anywhere",
   ];
 
   return (
@@ -48,7 +48,7 @@ export function Pricing() {
                 <span className="text-gray-600 ml-2">per month</span>
               </div>
               <CardDescription className="text-base mt-2">
-                Everything you need to pass NCLEX
+                Everything you need to ace your nursing exams
               </CardDescription>
             </CardHeader>
             <CardContent>

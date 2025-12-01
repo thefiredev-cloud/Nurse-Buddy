@@ -78,7 +78,7 @@ export async function POST(req: Request) {
 
     console.log("Generating test for user:", userId);
 
-    // Generate 100 NCLEX questions
+    // Generate 100 nursing practice questions
     const questions = await generateNCLEXTest();
 
     // Save test to database

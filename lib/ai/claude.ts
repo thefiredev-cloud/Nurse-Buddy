@@ -7,7 +7,7 @@ export const claude = apiKey
   ? new Anthropic({ apiKey })
   : null;
 
-// NCLEX categories for question generation
+// Nursing categories for question generation
 export const nclexCategories = [
   "Safe and Effective Care Environment",
   "Health Promotion and Maintenance",
@@ -121,11 +121,11 @@ export async function generateMockQuestion(category: NCLEXCategory): Promise<NCL
   return mockQuestions[category];
 }
 
-// Generate 100 NCLEX-style questions
+// Generate 100 nursing practice questions
 export async function generateNCLEXTest(): Promise<NCLEXQuestion[]> {
   const questions: NCLEXQuestion[] = [];
   
-  // Distribute questions across categories (approximate NCLEX distribution)
+  // Distribute questions across categories (standard nursing distribution)
   const distribution = {
     "Safe and Effective Care Environment": 25,
     "Health Promotion and Maintenance": 15,
@@ -157,14 +157,14 @@ export async function generateQuestionWithClaude(
     return generateMockQuestion(category);
   }
 
-  const prompt = `Generate a multiple-choice NCLEX-style question about ${category}.
+  const prompt = `Generate a multiple-choice nursing exam question about ${category}.
 
 Include:
 - A clinical scenario (2-3 sentences)
 - One question with 4 answer choices (A, B, C, D)
 - Mark the correct answer
 - Provide detailed rationales for why each answer is correct or incorrect
-- Follow NCLEX cognitive levels (Application/Analysis)
+- Use Application/Analysis cognitive levels
 
 Format as JSON:
 {
@@ -237,7 +237,7 @@ D: ${choices.D}
 Selected Answer: ${selectedAnswer}
 Correct Answer: ${correctAnswer}
 
-Provide a detailed, educational explanation suitable for NCLEX preparation. Include:
+Provide a detailed, educational explanation suitable for nursing exam preparation. Include:
 1. Why the selected answer is correct/incorrect
 2. Key nursing concepts involved
 3. Clinical reasoning points
@@ -294,7 +294,7 @@ Key Learning Points:
 Remember to carefully analyze each scenario and identify the priority action. Consider what would have the most immediate positive impact on patient outcomes.`;
 }
 
-// Generate NCLEX questions based on uploaded content (PowerPoint/PDF)
+// Generate nursing questions based on uploaded content (PowerPoint/PDF)
 export async function generateQuestionsFromContent(
   extractedContent: string,
   options: {
@@ -309,7 +309,7 @@ export async function generateQuestionsFromContent(
     return generateMockQuestionsFromContent(questionCount);
   }
 
-  const prompt = `You are an expert NCLEX nursing educator. Based on the following course material/lecture notes, generate ${questionCount} NCLEX-style practice questions.
+  const prompt = `You are an expert nursing educator. Based on the following course material/lecture notes, generate ${questionCount} nursing exam practice questions.
 
 Course Material:
 ${extractedContent}
@@ -322,7 +322,7 @@ Requirements:
 5. Focus on nursing judgment, safety, and evidence-based practice
 6. Questions should be at Application/Analysis cognitive levels
 
-Distribute questions across these NCLEX categories where applicable:
+Distribute questions across these nursing categories where applicable:
 - Safe and Effective Care Environment (25%)
 - Health Promotion and Maintenance (15%)
 - Psychosocial Integrity (10%)

@@ -16,23 +16,23 @@ export function Hero() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Pass Your NCLEX on the{" "}
-              <span className="text-nursing-blue">First Try</span>
+              Turn Your Class Slides Into{" "}
+              <span className="text-nursing-blue">Practice Tests</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              AI-powered practice tests that adapt to your learning style with
-              detailed rationales for every answer
+              Upload your nursing school PowerPoints and get AI-generated 100-question 
+              exams with detailed rationales for every answer
             </p>
 
             {/* CTA */}
             <div className="space-y-4">
               <Link href="/sign-up">
                 <Button size="lg" className="w-full sm:w-auto text-lg px-8 py-6">
-                  Start Your 100-Question Test Now
+                  Upload Your First PowerPoint Free
                 </Button>
               </Link>
               <p className="text-sm text-gray-500 sm:ml-4">
-                <span className="font-semibold text-nursing-blue">$35/month</span> - Unlimited Practice
+                <span className="font-semibold text-nursing-blue">5 free uploads</span> • $35/month for unlimited
               </p>
             </div>
           </motion.div>
@@ -45,50 +45,39 @@ export function Hero() {
             className="relative"
           >
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border">
-              {/* Question Section */}
+              {/* Upload Section */}
               <div className="p-6 border-b">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-medium text-gray-500">Question 45 of 100</span>
-                  <span className="text-sm font-medium text-nursing-green">75% Complete</span>
+                  <span className="text-sm font-medium text-gray-500">Upload Your Slides</span>
+                  <span className="text-sm font-medium text-nursing-green">Step 1 of 3</span>
                 </div>
-                <div className="h-2 bg-gray-200 rounded-full overflow-hidden mb-6">
-                  <div className="h-full w-3/4 bg-nursing-green rounded-full" />
+                <div className="border-2 border-dashed border-nursing-blue/30 rounded-lg p-6 text-center mb-4 bg-nursing-light/30">
+                  <div className="w-12 h-12 bg-nursing-blue/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg className="w-6 h-6 text-nursing-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                  </div>
+                  <p className="text-sm font-medium text-gray-700">MedSurg_Chapter12.pptx</p>
+                  <p className="text-xs text-gray-500 mt-1">42 slides • 2.4 MB</p>
                 </div>
-                <p className="text-sm text-gray-700 mb-4 font-medium">
-                  A nurse is caring for a client with heart failure. Which finding requires immediate intervention?
-                </p>
-                <div className="space-y-2">
-                  <div className="border-2 border-green-500 rounded-lg p-3 bg-green-50">
-                    <span className="font-semibold text-green-700">A.</span>{" "}
-                    <span className="text-sm text-gray-700">Irregular heart rate with dyspnea</span>
-                  </div>
-                  <div className="border rounded-lg p-3 hover:border-nursing-blue transition">
-                    <span className="font-medium text-gray-700">B.</span>{" "}
-                    <span className="text-sm text-gray-600">Mild ankle swelling</span>
-                  </div>
-                  <div className="border rounded-lg p-3 hover:border-nursing-blue transition">
-                    <span className="font-medium text-gray-700">C.</span>{" "}
-                    <span className="text-sm text-gray-600">Decreased appetite</span>
-                  </div>
-                  <div className="border rounded-lg p-3 hover:border-nursing-blue transition">
-                    <span className="font-medium text-gray-700">D.</span>{" "}
-                    <span className="text-sm text-gray-600">Occasional fatigue</span>
-                  </div>
+                <div className="flex items-center justify-between text-xs text-gray-500">
+                  <span>Supported: PPT, PPTX, PDF</span>
+                  <span className="text-nursing-green font-medium">Ready to generate</span>
                 </div>
               </div>
 
-              {/* Rationale Section */}
+              {/* Generated Test Preview */}
               <div className="p-6 bg-nursing-light">
                 <div className="flex items-center space-x-2 mb-3">
-                  <span className="text-lg text-green-600">✓</span>
-                  <span className="font-semibold text-green-700">Correct!</span>
+                  <span className="text-lg text-nursing-blue">✨</span>
+                  <span className="font-semibold text-nursing-blue">AI-Generated Test Ready</span>
                 </div>
                 <p className="text-sm text-gray-700 mb-3">
-                  <span className="font-medium">Why:</span> Irregular heart rate with dyspnea indicates acute decompensation requiring immediate assessment and intervention.
+                  <span className="font-medium">100 questions</span> created from your Med-Surg Chapter 12 slides
                 </p>
-                <div className="bg-white p-3 rounded border-l-4 border-nursing-blue">
+                <div className="bg-white p-3 rounded border-l-4 border-nursing-green">
                   <p className="text-xs text-gray-600">
-                    <span className="font-medium">Key Concept:</span> Assess for signs of reduced cardiac output (tachycardia, dyspnea, arrhythmias) in heart failure clients.
+                    <span className="font-medium">Includes:</span> Detailed rationales for every answer choice to help you understand the concepts
                   </p>
                 </div>
               </div>

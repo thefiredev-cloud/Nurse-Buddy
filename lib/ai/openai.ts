@@ -1,5 +1,5 @@
 /**
- * OpenAI Integration Module for NCLEX Rationale Generation
+ * OpenAI Integration Module for Nursing Rationale Generation
  * 
  * STATUS: Alternative provider (currently unused, Claude is primary)
  * 
@@ -58,7 +58,7 @@ Question: ${request.question}
 Selected Answer: ${request.selectedAnswer}
 Correct Answer: ${request.correctAnswer}
 
-Provide a detailed, educational explanation suitable for NCLEX preparation. Include:
+Provide a detailed, educational explanation suitable for nursing exam preparation. Include:
 1. Why the selected answer is correct/incorrect
 2. Key nursing concepts involved
 3. Clinical reasoning points
@@ -72,7 +72,7 @@ Keep response concise but thorough (200-300 words).`;
       messages: [
         {
           role: "system",
-          content: "You are an expert nursing educator specializing in NCLEX preparation.",
+          content: "You are an expert nursing educator specializing in nursing exam preparation.",
         },
         { role: "user", content: prompt },
       ],

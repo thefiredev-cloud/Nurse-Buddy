@@ -6,20 +6,20 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nurse Buddy - AI-Powered NCLEX Test Prep | Pass Your NCLEX First Try",
-  description: "Prepare for NCLEX with AI-generated practice tests. 100-question exams with detailed rationales. 92% pass rate. Start for $35/month.",
-  keywords: "NCLEX prep, NCLEX-RN, NCLEX-PN, nursing test prep, NCLEX practice questions, nursing exam, NCLEX study guide",
+  title: "Nurse Buddy - AI-Powered Nursing School Test Prep | Upload PowerPoints, Ace Your Exams",
+  description: "Turn your nursing school PowerPoints into practice tests. Upload slides, get 100-question exams with AI rationales. 5 free uploads. Start for $35/month.",
+  keywords: "nursing school test prep, nursing exam study, PowerPoint to practice test, nursing student study tool, upload slides practice exam, nursing school practice questions",
   openGraph: {
-    title: "Nurse Buddy - AI-Powered NCLEX Test Prep",
-    description: "Pass Your NCLEX on the First Try with AI-powered practice tests",
+    title: "Nurse Buddy - Upload Your Slides, Ace Your Nursing Exams",
+    description: "Turn your nursing school PowerPoints into 100-question practice tests with AI-generated rationales",
     url: "https://nursebuddy.io",
     siteName: "Nurse Buddy",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nurse Buddy - AI-Powered NCLEX Test Prep",
-    description: "Pass Your NCLEX on the First Try with AI-powered practice tests",
+    title: "Nurse Buddy - Upload Your Slides, Ace Your Nursing Exams",
+    description: "Turn your nursing school PowerPoints into 100-question practice tests with AI-generated rationales",
   },
 };
 

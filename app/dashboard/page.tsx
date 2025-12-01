@@ -73,7 +73,7 @@ export default async function DashboardPage() {
           Welcome Back, {user.firstName}!
         </h2>
         <p className="text-gray-600">
-          Ready to continue your NCLEX preparation?
+          Ready to continue studying?
         </p>
       </div>
 
@@ -166,7 +166,7 @@ export default async function DashboardPage() {
           <CardHeader>
             <CardTitle>Start New Test</CardTitle>
             <CardDescription>
-              Take a 100-question NCLEX-style practice exam
+              Take a 100-question practice exam from your uploads
             </CardDescription>
           </CardHeader>
           <CardContent>

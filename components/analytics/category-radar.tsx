@@ -30,7 +30,7 @@ export function CategoryRadar({ data }: CategoryRadarProps) {
       <Card className="h-full">
         <CardHeader>
           <CardTitle>Category Performance</CardTitle>
-          <CardDescription>Performance breakdown by NCLEX category</CardDescription>
+          <CardDescription>Performance breakdown by nursing category</CardDescription>
         </CardHeader>
         <CardContent className="h-[300px] flex items-center justify-center text-gray-500">
           Not enough data yet
@@ -43,7 +43,7 @@ export function CategoryRadar({ data }: CategoryRadarProps) {
     <Card className="h-full">
       <CardHeader>
         <CardTitle>Category Performance</CardTitle>
-        <CardDescription>Performance breakdown by NCLEX category</CardDescription>
+        <CardDescription>Performance breakdown by nursing category</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">

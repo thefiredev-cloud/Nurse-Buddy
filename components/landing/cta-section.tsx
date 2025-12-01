@@ -15,10 +15,10 @@ export function CTASection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Pass Your NCLEX?
+            Ready to Ace Your Nursing Exams?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Join thousands of successful nursing students
+            Join nursing students who study smarter with AI-powered practice tests
           </p>
           <Link href="/sign-up">
             <Button

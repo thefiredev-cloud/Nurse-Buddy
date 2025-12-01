@@ -113,7 +113,7 @@ export default function UploadsPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">My Materials</h1>
           <p className="mt-2 text-gray-600">
-            Upload PowerPoint or PDF files to generate personalized NCLEX practice tests
+            Upload PowerPoint or PDF files to generate personalized practice tests
           </p>
         </div>
 

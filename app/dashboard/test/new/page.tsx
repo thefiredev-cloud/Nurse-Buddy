@@ -140,7 +140,7 @@ export default function NewTestPage() {
         <CardHeader>
           <CardTitle className="text-3xl">Start New Practice Test</CardTitle>
           <CardDescription className="text-base">
-            You&apos;re about to begin a 100-question NCLEX-style practice exam
+            You&apos;re about to begin a 100-question practice exam
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -152,11 +152,11 @@ export default function NewTestPage() {
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-start">
                 <span className="mr-2">•</span>
-                <span>100 AI-generated NCLEX-style questions</span>
+                <span>100 AI-generated questions from your content</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2">•</span>
-                <span>Questions distributed across all NCLEX categories</span>
+                <span>Questions distributed across nursing categories</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2">•</span>
@@ -164,7 +164,7 @@ export default function NewTestPage() {
               </li>
               <li className="flex items-start">
                 <span className="mr-2">•</span>
-                <span>Optional 6-hour timer (matches real NCLEX)</span>
+                <span>Optional 6-hour timer for exam simulation</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2">•</span>

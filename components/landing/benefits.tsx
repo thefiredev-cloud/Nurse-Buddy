@@ -1,11 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Infinity, BarChart3, Smartphone, Clock } from "lucide-react";
+import { Upload, Infinity, BarChart3, Smartphone, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function Benefits() {
   const benefits = [
+    {
+      icon: Upload,
+      title: "Upload PowerPoints",
+      description: "Turn your class slides into practice tests",
+    },
     {
       icon: Infinity,
       title: "Unlimited Practice Tests",
@@ -42,11 +47,11 @@ export function Benefits() {
             Everything You Need to Succeed
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            All the tools and features to pass your NCLEX with confidence
+            All the tools and features to ace your nursing school exams
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (

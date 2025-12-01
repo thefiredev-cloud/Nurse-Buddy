@@ -7,18 +7,18 @@ import { Card, CardContent } from "@/components/ui/card";
 export function Testimonials() {
   const testimonials = [
     {
-      text: "Nurse Buddy helped me pass my NCLEX on the first try! The rationales were incredibly helpful.",
-      author: "Sarah M., RN",
+      text: "I uploaded my Med-Surg slides and got a practice test in minutes. Scored 94% on my actual exam!",
+      author: "Sarah M., BSN Student",
       rating: 5,
     },
     {
-      text: "The AI-generated questions were spot-on with what I saw on the actual exam.",
-      author: "Michael R., BSN",
+      text: "The AI-generated questions from my Pharmacology PowerPoints were exactly what I needed to study.",
+      author: "Michael R., Nursing Student",
       rating: 5,
     },
     {
-      text: "Worth every penny. I tried other platforms but Nurse Buddy's explanations are unmatched.",
-      author: "Jennifer L., RN",
+      text: "Game changer for nursing school. I upload my lecture slides and have practice tests ready the same day.",
+      author: "Jennifer L., ADN Student",
       rating: 5,
     },
   ];
@@ -34,10 +34,10 @@ export function Testimonials() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Trusted by Successful Nurses
+            Trusted by Nursing Students
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            See what our students have to say about their NCLEX success
+            See what nursing students have to say about studying smarter
           </p>
         </motion.div>
 

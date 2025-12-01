@@ -130,7 +130,7 @@ export default function TestResultsPage() {
             </p>
             {test.score >= 75 && (
               <p className="text-green-700 font-semibold mt-2">
-                Excellent! You&apos;re well prepared for the NCLEX.
+                Excellent! You&apos;re well prepared for your exam.
               </p>
             )}
             {test.score >= 60 && test.score < 75 && (
@@ -152,7 +152,7 @@ export default function TestResultsPage() {
         <CardHeader>
           <CardTitle>Category Performance</CardTitle>
           <CardDescription>
-            Your performance across NCLEX categories
+            Your performance across nursing categories
           </CardDescription>
         </CardHeader>
         <CardContent>

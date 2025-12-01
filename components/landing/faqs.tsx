@@ -11,24 +11,24 @@ import {
 export function FAQs() {
   const faqs = [
     {
-      question: "How similar are the questions to the actual NCLEX?",
+      question: "What file types can I upload?",
       answer:
-        "Our AI generates questions following NCLEX test plan specifications and Bloom's taxonomy levels. The questions are designed to match the format, difficulty, and content distribution of the actual exam.",
+        "We support PowerPoint files (PPT, PPTX) and PDF documents. Upload your lecture slides, study guides, or any nursing course materials to generate practice tests.",
     },
     {
-      question: "Can I retake tests?",
+      question: "How many files can I upload for free?",
       answer:
-        "Yes! You get unlimited 100-question tests with your subscription. Each test features fresh, AI-generated questions so you never see the same question twice.",
+        "You get 5 free uploads to try Nurse Buddy. Each upload generates a full 100-question practice test. Subscribe for unlimited uploads and tests.",
     },
     {
-      question: "Is there a free trial?",
+      question: "How are questions generated from my slides?",
       answer:
-        "We offer a 7-day money-back guarantee instead of a free trial to ensure serious students. If you're not satisfied within the first week, we'll refund your payment in full.",
+        "Our AI analyzes your uploaded content to understand key concepts, then generates clinically-relevant questions with detailed rationales for every answer choice.",
     },
     {
-      question: "How are the questions generated?",
+      question: "Can I use this for any nursing class?",
       answer:
-        "We use Claude AI to create questions based on current NCLEX test plans and nursing curricula. Each question is generated fresh and includes detailed rationales for all answer choices.",
+        "Yes! Upload materials from any nursing course - Med-Surg, Pharmacology, Fundamentals, OB, Pediatrics, Mental Health, and more. The AI adapts to your content.",
     },
   ];
 

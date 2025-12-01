@@ -272,3 +272,5 @@ The webhook handler (`app/api/webhooks/clerk/route.ts`) integrates with:
 **Verification**: Automatic via `verifyWebhook()` from `@clerk/nextjs/server`
 
 
+
+

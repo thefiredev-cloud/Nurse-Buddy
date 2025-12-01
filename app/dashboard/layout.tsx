@@ -18,7 +18,7 @@ export default function DashboardLayout({
         {/* Header */}
         <header className="h-16 bg-white border-b flex items-center justify-between px-6">
           <h1 className="text-xl font-semibold text-gray-900">
-            NCLEX Test Prep
+            Nursing School Test Prep
           </h1>
           <UserMenu />
         </header>

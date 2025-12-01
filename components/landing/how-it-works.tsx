@@ -6,18 +6,18 @@ export function HowItWorks() {
   const steps = [
     {
       number: 1,
-      title: "Sign Up",
-      description: "Create your account in 30 seconds",
+      title: "Upload Your Slides",
+      description: "PowerPoint or PDF from any nursing class",
     },
     {
       number: 2,
-      title: "Take Practice Tests",
-      description: "100-question NCLEX-style exams",
+      title: "AI Generates Your Test",
+      description: "100 questions tailored to your material",
     },
     {
       number: 3,
       title: "Learn from Rationales",
-      description: "Understand why answers are correct or incorrect",
+      description: "Understand every answer with AI explanations",
     },
   ];
 

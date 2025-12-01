@@ -8,18 +8,18 @@ export function UseCases() {
   const cases = [
     {
       icon: GraduationCap,
-      title: "Pre-NCLEX Students",
-      description: "Final year nursing students preparing for licensure",
+      title: "First-Year Students",
+      description: "Foundations and fundamentals courses",
     },
     {
       icon: RefreshCw,
-      title: "NCLEX Retakers",
-      description: "Students who need targeted practice after initial attempt",
+      title: "Med-Surg Students",
+      description: "Complex clinical content and pathophysiology",
     },
     {
       icon: Globe,
-      title: "International Nurses",
-      description: "Foreign-educated nurses preparing for US licensure",
+      title: "Final-Year Students",
+      description: "Comprehensive review across all nursing subjects",
     },
   ];
 
@@ -37,7 +37,7 @@ export function UseCases() {
             Who Uses Nurse Buddy?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Trusted by nursing students at every stage of their NCLEX journey
+            Nursing students at every level use Nurse Buddy to ace their exams
           </p>
         </motion.div>
 

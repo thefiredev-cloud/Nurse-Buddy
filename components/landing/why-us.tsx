@@ -7,18 +7,18 @@ export function WhyUs() {
   const reasons = [
     {
       icon: Sparkles,
-      heading: "AI-Generated Questions",
-      text: "Fresh, unique questions every test - never see the same question twice",
+      heading: "Your Slides, Custom Tests",
+      text: "Upload your PowerPoints and get tests tailored to YOUR course material",
     },
     {
       icon: BookOpen,
-      heading: "Comprehensive Rationales",
-      text: "Detailed explanations for every answer choice",
+      heading: "AI-Powered Rationales",
+      text: "Detailed explanations for every answer choice from your content",
     },
     {
       icon: ClipboardCheck,
-      heading: "NCLEX-Style Format",
-      text: "100 questions per test, exactly like the real exam",
+      heading: "100-Question Exams",
+      text: "Comprehensive practice tests generated in seconds",
     },
   ];
 
@@ -34,7 +34,7 @@ export function WhyUs() {
         >
           <h2 className="text-4xl font-bold mb-4">Why Choose Nurse Buddy?</h2>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            The most advanced NCLEX preparation platform available
+            The smartest way to study for nursing school exams
           </p>
         </motion.div>
 
