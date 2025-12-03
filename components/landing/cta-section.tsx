@@ -19,9 +19,9 @@ export function CTASection() {
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-nursing-blue-600 via-nursing-blue-700 to-nursing-purple-700" />
 
-      {/* Background decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-nursing-purple-400/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      {/* Background decorations - constrained for mobile */}
+      <div className="absolute top-0 left-0 w-48 h-48 md:w-96 md:h-96 bg-white/5 rounded-full blur-3xl -translate-x-1/4 md:-translate-x-1/2 -translate-y-1/4 md:-translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-40 h-40 md:w-80 md:h-80 bg-nursing-purple-400/10 rounded-full blur-3xl translate-x-1/4 md:translate-x-1/2 translate-y-1/4 md:translate-y-1/2 pointer-events-none" />
 
       {/* Grid pattern overlay */}
       <div

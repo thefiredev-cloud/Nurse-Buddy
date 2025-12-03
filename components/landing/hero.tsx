@@ -16,10 +16,10 @@ export function Hero() {
       className="relative pt-28 pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-4 gradient-hero overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-nursing-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-nursing-green-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-nursing-purple-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      {/* Background decorations - hidden on mobile to prevent overflow */}
+      <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-nursing-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 md:translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 md:w-80 md:h-80 bg-nursing-green-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 md:-translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 w-48 h-48 md:w-64 md:h-64 bg-nursing-purple-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
       <div className="container-wide relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
