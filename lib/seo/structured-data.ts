@@ -12,8 +12,8 @@ export interface FAQItem {
  * Organization Schema - Establishes brand identity for search engines
  * Target keywords: Nurse Buddy, nursing test prep, AI nursing education
  */
-export function OrganizationSchema() {
-  const schema = {
+export function getOrganizationSchema() {
+  return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Nurse Buddy",
@@ -39,21 +39,14 @@ export function OrganizationSchema() {
       name: "United States",
     },
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 /**
  * Educational Organization Schema - Positions as an educational platform
  * Target keywords: nursing education, nursing school, nursing courses
  */
-export function EducationalOrganizationSchema() {
-  const schema = {
+export function getEducationalOrganizationSchema() {
+  return {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     name: "Nurse Buddy",
@@ -72,21 +65,14 @@ export function EducationalOrganizationSchema() {
       "Pathophysiology",
     ],
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 /**
  * Software Application Schema - For app store and search visibility
  * Target keywords: nursing study app, nursing practice test app, nursing exam app
  */
-export function SoftwareApplicationSchema() {
-  const schema = {
+export function getSoftwareApplicationSchema() {
+  return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Nurse Buddy",
@@ -112,21 +98,14 @@ export function SoftwareApplicationSchema() {
     ],
     screenshot: "https://nursebuddy.io/screenshot.png",
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 /**
  * Product Schema - For pricing section rich snippets
  * Target keywords: nursing test prep subscription, nursing exam prep pricing
  */
-export function ProductSchema() {
-  const schema = {
+export function getProductSchema() {
+  return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "Nurse Buddy Pro Access",
@@ -150,21 +129,14 @@ export function ProductSchema() {
     },
     category: "Educational Software",
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 /**
  * FAQ Schema - Critical for featured snippets and AEO
  * Target keywords: nursing test prep FAQ, nursing exam questions
  */
-export function FAQSchema({ faqs }: { faqs: FAQItem[] }) {
-  const schema = {
+export function getFAQSchema(faqs: FAQItem[]) {
+  return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqs.map((faq) => ({
@@ -176,21 +148,14 @@ export function FAQSchema({ faqs }: { faqs: FAQItem[] }) {
       },
     })),
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 /**
  * HowTo Schema - For "How It Works" section
  * Target keywords: how to study for nursing exams, nursing test prep steps
  */
-export function HowToSchema() {
-  const schema = {
+export function getHowToSchema() {
+  return {
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: "How to Create Custom Nursing Practice Tests with Nurse Buddy",
@@ -221,20 +186,13 @@ export function HowToSchema() {
       },
     ],
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 /**
  * WebSite Schema with SearchAction - For sitelinks search box
  */
-export function WebSiteSchema() {
-  const schema = {
+export function getWebSiteSchema() {
+  return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Nurse Buddy",
@@ -250,24 +208,13 @@ export function WebSiteSchema() {
       "query-input": "required name=search_term_string",
     },
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 /**
  * BreadcrumbList Schema - For navigation rich snippets
  */
-export function BreadcrumbSchema({
-  items,
-}: {
-  items: { name: string; url: string }[];
-}) {
-  const schema = {
+export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
@@ -277,25 +224,16 @@ export function BreadcrumbSchema({
       item: item.url,
     })),
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 /**
  * Combined Landing Page Schema - All schemas for the homepage
  */
-export function LandingPageSchemas() {
-  return (
-    <>
-      <OrganizationSchema />
-      <SoftwareApplicationSchema />
-      <HowToSchema />
-      <WebSiteSchema />
-    </>
-  );
+export function getLandingPageSchemas() {
+  return [
+    getOrganizationSchema(),
+    getSoftwareApplicationSchema(),
+    getHowToSchema(),
+    getWebSiteSchema(),
+  ];
 }
