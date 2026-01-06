@@ -22,7 +22,7 @@ export function Hero() {
       <div className="hidden sm:block absolute top-1/2 left-1/2 w-48 h-48 md:w-64 md:h-64 bg-nursing-purple-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
       <div className="container-wide relative">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content - SEO-rich headline */}
           <motion.div
             initial="hidden"
@@ -61,22 +61,22 @@ export function Hero() {
             {/* CTA Section */}
             <motion.div variants={staggerItem} className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/sign-up">
+                <Link href="/sign-up" className="w-full sm:w-auto">
                   <Button
-                    size="xl"
+                    size="lg"
                     variant="premium"
-                    className="w-full sm:w-auto group cta-glow"
+                    className="w-full group cta-glow"
                   >
-                    <Upload className="w-5 h-5 mr-2" />
+                    <Upload className="w-4 h-4 mr-2" />
                     Upload Your First PowerPoint Free
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href="#how-it-works">
+                <Link href="#how-it-works" className="w-full sm:w-auto">
                   <Button
-                    size="xl"
+                    size="lg"
                     variant="outline"
-                    className="w-full sm:w-auto"
+                    className="w-full"
                   >
                     See How It Works
                   </Button>
@@ -108,7 +108,7 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             variants={scaleIn}
-            className="relative w-full max-w-lg mx-auto lg:max-w-none lg:mx-0"
+            className="relative w-full max-w-md mx-auto lg:max-w-none lg:mx-0"
           >
             {/* Floating decoration */}
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-nursing-purple-100 rounded-2xl rotate-12 animate-float hidden lg:block" />
