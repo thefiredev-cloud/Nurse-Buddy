@@ -37,7 +37,7 @@ export function PerformanceTrend({ tests }: PerformanceTrendProps) {
           <CardTitle>Score Trend</CardTitle>
           <CardDescription>Your progress over the last 10 tests</CardDescription>
         </CardHeader>
-        <CardContent className="h-[300px] flex items-center justify-center text-gray-500">
+        <CardContent className="h-48 sm:h-64 md:h-[300px] flex items-center justify-center text-gray-500">
           No completed tests yet
         </CardContent>
       </Card>
@@ -51,7 +51,7 @@ export function PerformanceTrend({ tests }: PerformanceTrendProps) {
         <CardDescription>Your progress over the last 10 tests</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[300px] w-full">
+        <div className="h-48 sm:h-64 md:h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={chartData}

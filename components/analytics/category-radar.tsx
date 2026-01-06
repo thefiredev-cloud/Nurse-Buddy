@@ -32,7 +32,7 @@ export function CategoryRadar({ data }: CategoryRadarProps) {
           <CardTitle>Category Performance</CardTitle>
           <CardDescription>Performance breakdown by nursing category</CardDescription>
         </CardHeader>
-        <CardContent className="h-[300px] flex items-center justify-center text-gray-500">
+        <CardContent className="h-48 sm:h-64 md:h-[300px] flex items-center justify-center text-gray-500">
           Not enough data yet
         </CardContent>
       </Card>
@@ -46,7 +46,7 @@ export function CategoryRadar({ data }: CategoryRadarProps) {
         <CardDescription>Performance breakdown by nursing category</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[300px] w-full">
+        <div className="h-48 sm:h-64 md:h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
               <PolarGrid stroke="#e5e7eb" />

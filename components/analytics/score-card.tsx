@@ -57,28 +57,28 @@ export function ScoreCard({ averageScore, totalTests, streakDays, studyHours }: 
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
       {stats.map((stat) => {
         const Icon = stat.icon;
         return (
           <Card key={stat.label}>
-            <CardContent className="p-6">
+            <CardContent className="p-3 sm:p-4 md:p-6">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 mb-1">
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600 mb-1 truncate">
                     {stat.label}
                   </p>
                   <div className="flex items-baseline gap-2">
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
                       {stat.value}
                     </p>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-[10px] sm:text-xs text-gray-500 mt-1 truncate">
                     {stat.subtext}
                   </p>
                 </div>
-                <div className={`w-12 h-12 ${stat.bg} rounded-lg flex items-center justify-center`}>
-                  <Icon className={`w-6 h-6 ${stat.color}`} />
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ${stat.bg} rounded-lg flex items-center justify-center shrink-0 ml-2`}>
+                  <Icon className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ${stat.color}`} />
                 </div>
               </div>
             </CardContent>

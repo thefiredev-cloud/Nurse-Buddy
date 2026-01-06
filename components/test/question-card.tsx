@@ -34,7 +34,7 @@ export function QuestionCard({
 }: QuestionCardProps) {
   return (
     <Card>
-      <CardContent className="p-6 space-y-6">
+      <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
         {/* Question Header */}
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium text-gray-500">
@@ -72,7 +72,7 @@ export function QuestionCard({
                 onClick={() => !showRationale && onSelectAnswer(letter)}
                 disabled={showRationale}
                 className={cn(
-                  "w-full text-left p-4 rounded-lg border-2 transition",
+                  "w-full text-left p-3 sm:p-4 rounded-lg border-2 transition min-h-[56px]",
                   "hover:border-nursing-blue disabled:cursor-not-allowed",
                   isSelected && !showRationale && "border-nursing-blue bg-nursing-light",
                   showCorrect && "border-green-500 bg-green-50",

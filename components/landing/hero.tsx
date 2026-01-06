@@ -17,9 +17,9 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       {/* Background decorations - hidden on mobile to prevent overflow */}
-      <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-nursing-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 md:translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 md:w-80 md:h-80 bg-nursing-green-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 md:-translate-x-1/2 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 w-48 h-48 md:w-64 md:h-64 bg-nursing-purple-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="hidden sm:block absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-nursing-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 md:translate-x-1/2 pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-0 left-0 w-48 h-48 md:w-80 md:h-80 bg-nursing-green-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 md:-translate-x-1/2 pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/2 left-1/2 w-48 h-48 md:w-64 md:h-64 bg-nursing-purple-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
       <div className="container-wide relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -41,7 +41,7 @@ export function Hero() {
             <motion.h1
               id="hero-heading"
               variants={staggerItem}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight break-words"
             >
               Turn Your Class Slides Into{" "}
               <span className="text-gradient-nursing">Practice Tests</span>
@@ -50,7 +50,7 @@ export function Hero() {
             {/* Subheadline with secondary keywords */}
             <motion.p
               variants={staggerItem}
-              className="text-lg sm:text-xl text-gray-600 mb-8 max-w-xl leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 max-w-full sm:max-w-lg md:max-w-xl leading-relaxed"
             >
               Upload your nursing school PowerPoints and get AI-generated{" "}
               <strong>100-question exams</strong> with{" "}
@@ -84,18 +84,18 @@ export function Hero() {
               </div>
 
               {/* Trust indicators */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-nursing-green-500 animate-pulse-soft" />
                   <span className="text-sm font-medium text-nursing-blue-600">
                     5 free uploads included
                   </span>
                 </div>
-                <div className="text-gray-400">•</div>
+                <div className="hidden sm:block text-gray-400">•</div>
                 <span className="text-sm text-gray-600">
                   $35/month for unlimited
                 </span>
-                <div className="text-gray-400">•</div>
+                <div className="hidden sm:block text-gray-400">•</div>
                 <span className="text-sm text-gray-600">
                   Cancel anytime
                 </span>
@@ -108,7 +108,7 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             variants={scaleIn}
-            className="relative"
+            className="relative w-full max-w-lg mx-auto lg:max-w-none lg:mx-0"
           >
             {/* Floating decoration */}
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-nursing-purple-100 rounded-2xl rotate-12 animate-float hidden lg:block" />
@@ -138,7 +138,7 @@ export function Hero() {
                   <p className="text-sm text-gray-500 mt-1">42 slides • 2.4 MB</p>
                 </div>
 
-                <div className="flex items-center justify-between mt-4 text-xs text-gray-500">
+                <div className="flex flex-wrap items-center justify-between gap-2 mt-4 text-xs text-gray-500">
                   <span>Supports: PPT, PPTX, PDF</span>
                   <span className="text-nursing-green-600 font-medium flex items-center gap-1">
                     <div className="w-1.5 h-1.5 rounded-full bg-nursing-green-500" />
@@ -173,7 +173,7 @@ export function Hero() {
                 </div>
 
                 {/* Stats preview */}
-                <div className="grid grid-cols-3 gap-3 mt-4">
+                <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
                   {[
                     { label: "Questions", value: "100" },
                     { label: "Topics", value: "12" },
@@ -181,12 +181,12 @@ export function Hero() {
                   ].map((stat) => (
                     <div
                       key={stat.label}
-                      className="bg-white/80 rounded-lg p-2 text-center"
+                      className="bg-white/80 rounded-lg p-1.5 sm:p-2 text-center min-w-0"
                     >
-                      <p className="text-lg font-bold text-nursing-blue-600">
+                      <p className="text-base sm:text-lg font-bold text-nursing-blue-600">
                         {stat.value}
                       </p>
-                      <p className="text-xs text-gray-500">{stat.label}</p>
+                      <p className="text-[10px] sm:text-xs text-gray-500 truncate">{stat.label}</p>
                     </div>
                   ))}
                 </div>
