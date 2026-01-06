@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Loader2, CheckCircle2 } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 interface UserSettings {
   name: string;
   email: string;

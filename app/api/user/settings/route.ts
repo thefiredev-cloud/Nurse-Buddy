@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/supabase";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { mockUser } from "@/lib/auth-mock";
+import { userSettingsSchema, validateBody } from "@/lib/validations";
 
 async function getUserId() {
   try {
@@ -81,11 +82,18 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { name, email, preferences } = body;
+
+    // Validate request body
+    const validation = validateBody(userSettingsSchema, body);
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 });
+    }
+
+    const { name, email, preferences } = validation.data;
 
     // Update user preferences
     const updateData: any = {};
-    
+
     if (preferences) {
       updateData.preferences = preferences;
     }

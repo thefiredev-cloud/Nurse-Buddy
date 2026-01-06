@@ -10,6 +10,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { UploadFile } from "@/lib/upload/types";
 
+export const dynamic = 'force-dynamic';
+
 export default function UploadsPage() {
   const { user, isLoaded } = useUser();
   const router = useRouter();

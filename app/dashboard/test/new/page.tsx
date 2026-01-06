@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Loader2, BookOpen, Crown, AlertTriangle } from "lucide-react";
 import { UpgradeModal } from "@/components/subscription/upgrade-modal";
 
+export const dynamic = 'force-dynamic';
+
 interface SubscriptionStatus {
   isSubscribed: boolean;
   testsUsed: number;

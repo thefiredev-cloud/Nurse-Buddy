@@ -6,6 +6,8 @@ import { getUserStats, getUserTests, getUserSubscriptionStatus, FREE_TIER_TEST_L
 import { mockUser } from "@/lib/auth-mock";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
+export const dynamic = 'force-dynamic';
+
 async function getUserData() {
   try {
     const user = await currentUser();

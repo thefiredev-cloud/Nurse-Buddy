@@ -16,6 +16,8 @@ import {
   Clock
 } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 interface SubscriptionStatus {
   isSubscribed: boolean;
   status: string;
@@ -311,6 +313,8 @@ function FeatureItem({ children, included }: { children: React.ReactNode; includ
     </li>
   );
 }
+
+
 
 
 

@@ -8,6 +8,8 @@ import { Clock, Calendar, ArrowRight, BookOpen, CheckCircle2, PlayCircle } from 
 import type { Test } from "@/lib/database/schema";
 import { EndTestButton } from "@/components/test/end-test-button";
 
+export const dynamic = 'force-dynamic';
+
 async function getUserId() {
   try {
     const { userId } = auth();

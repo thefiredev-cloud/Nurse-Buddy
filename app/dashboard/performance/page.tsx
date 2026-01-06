@@ -6,6 +6,8 @@ import { PerformanceTrend } from "@/components/analytics/performance-trend";
 import { WeakTopics } from "@/components/analytics/weak-topics";
 import { auth } from "@clerk/nextjs/server";
 
+export const dynamic = 'force-dynamic';
+
 async function getUserId() {
   try {
     const { userId } = auth();

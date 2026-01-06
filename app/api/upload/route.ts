@@ -9,6 +9,7 @@ import {
 import { parseUploadedFile } from "@/lib/upload/parser";
 import { ALLOWED_EXTENSIONS, ALLOWED_MIME_TYPES, MAX_FILE_SIZE, MAX_FREE_UPLOADS } from "@/lib/upload/types";
 import { db } from "@/lib/supabase";
+import { checkRateLimit, RATE_LIMITS, getRateLimitHeaders } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,6 +19,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
+      );
+    }
+
+    // Apply rate limiting for authenticated users
+    const rateLimit = checkRateLimit(`upload:${user.id}`, RATE_LIMITS.authenticated);
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { error: "Rate limit exceeded. Please try again later." },
+        { status: 429, headers: getRateLimitHeaders(rateLimit) }
       );
     }
 

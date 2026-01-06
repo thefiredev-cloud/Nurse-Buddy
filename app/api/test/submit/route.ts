@@ -3,6 +3,8 @@ import { generateRationaleWithClaude } from "@/lib/ai/claude";
 import { getTestById, updateTestAnswers } from "@/lib/database/queries";
 import { auth } from "@clerk/nextjs/server";
 import { mockUser } from "@/lib/auth-mock";
+import { submitAnswerSchema, validateBody } from "@/lib/validations";
+import { checkRateLimit, RATE_LIMITS, getRateLimitHeaders } from "@/lib/rate-limit";
 
 async function getUserId() {
   try {
@@ -23,7 +25,7 @@ async function getUserId() {
 export async function POST(req: Request) {
   try {
     const userId = await getUserId();
-    
+
     if (!userId) {
       return NextResponse.json(
         { error: "Unauthorized" },
@@ -31,8 +33,24 @@ export async function POST(req: Request) {
       );
     }
 
+    // Apply rate limiting for AI endpoint
+    const rateLimit = checkRateLimit(`submit:${userId}`, RATE_LIMITS.aiEndpoint);
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { error: "Rate limit exceeded. Please try again later." },
+        { status: 429, headers: getRateLimitHeaders(rateLimit) }
+      );
+    }
+
     const body = await req.json();
-    const { testId, questionId, selectedAnswer, question, correctAnswer, scenario, choices } = body;
+
+    // Validate request body
+    const validation = validateBody(submitAnswerSchema, body);
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 });
+    }
+
+    const { testId, questionId, selectedAnswer, question, correctAnswer, scenario, choices } = validation.data;
 
     // Verify test exists and belongs to user
     const test = await getTestById(testId, userId);

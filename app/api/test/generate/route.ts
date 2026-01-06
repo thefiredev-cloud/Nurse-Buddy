@@ -3,6 +3,7 @@ import { generateNCLEXTest } from "@/lib/ai/claude";
 import { createTest, createUser, getUserById, canUserCreateTest } from "@/lib/database/queries";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { mockUser } from "@/lib/auth-mock";
+import { checkRateLimit, RATE_LIMITS, getRateLimitHeaders } from "@/lib/rate-limit";
 
 async function ensureUserExists() {
   try {
@@ -52,11 +53,20 @@ async function ensureUserExists() {
 export async function POST(req: Request) {
   try {
     const userId = await ensureUserExists();
-    
+
     if (!userId) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
+      );
+    }
+
+    // Apply rate limiting for AI endpoint
+    const rateLimit = checkRateLimit(`generate:${userId}`, RATE_LIMITS.aiEndpoint);
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { error: "Rate limit exceeded. Please try again later." },
+        { status: 429, headers: getRateLimitHeaders(rateLimit) }
       );
     }
 
