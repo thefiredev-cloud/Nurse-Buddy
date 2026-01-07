@@ -3,6 +3,22 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://nursebuddy.io";
 
+  // Nursing specialty pages for SEO
+  const nursingSpecialties = [
+    "med-surg",
+    "pharmacology",
+    "fundamentals",
+    "hesi",
+    "ati",
+  ];
+
+  const specialtyPages = nursingSpecialties.map((specialty) => ({
+    url: `${baseUrl}/nursing/${specialty}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -28,6 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.7,
     },
+    // Nursing specialty landing pages
+    ...specialtyPages,
     {
       url: `${baseUrl}/privacy`,
       lastModified: new Date(),

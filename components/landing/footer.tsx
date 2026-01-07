@@ -15,10 +15,16 @@ export function Footer() {
       { label: "Pricing", href: "#pricing" },
       { label: "FAQs", href: "#faqs" },
     ],
+    courses: [
+      { label: "Med-Surg Practice", href: "/nursing/med-surg" },
+      { label: "Pharmacology", href: "/nursing/pharmacology" },
+      { label: "Fundamentals", href: "/nursing/fundamentals" },
+      { label: "HESI Prep", href: "/nursing/hesi" },
+      { label: "ATI Practice", href: "/nursing/ati" },
+    ],
     company: [
       { label: "About Us", href: "/about" },
       { label: "Contact Support", href: "/contact" },
-      { label: "Blog", href: "/blog" },
     ],
     legal: [
       { label: "Privacy Policy", href: "/privacy" },
@@ -36,7 +42,7 @@ export function Footer() {
     <footer className="bg-gray-900 text-gray-300" role="contentinfo">
       <div className="container-wide py-12 md:py-16">
         {/* Main footer content */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
@@ -88,13 +94,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company links */}
+          {/* Nursing Courses links - SEO internal linking */}
           <div>
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-              Company
+              Practice Tests
             </h3>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
+              {footerLinks.courses.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

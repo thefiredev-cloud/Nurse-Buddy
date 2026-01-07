@@ -151,6 +151,9 @@ export default function RootLayout({
   const content = (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+
         {/* Preconnect to external resources for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
